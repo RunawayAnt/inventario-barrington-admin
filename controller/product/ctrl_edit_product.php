@@ -15,5 +15,5 @@ $idproveedor = htmlspecialchars($_POST['edit_prov'], ENT_QUOTES, 'UTF-8');
 $unidad = htmlspecialchars($_POST['edit_unid'], ENT_QUOTES, 'UTF-8');
 
 $queryUser = $model->editProduct($id,$nom,$descrip,$preentrada,$presalida,$mininv,$idcategoria,$idproveedor,$unidad);
-//$data = json_encode($queryUser);
+$data = json_encode($queryUser);
 echo $queryUser;

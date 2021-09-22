@@ -10,7 +10,7 @@
         public function __construct(){
         $this->server = "localhost";
         $this->user = "root";
-        $this->database = "";
+        $this->passwoard = "root";
         $this->database = "dbbarrint";
         }
         function Connect(){

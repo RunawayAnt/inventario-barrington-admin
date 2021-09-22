@@ -8,15 +8,16 @@ function dashboard() {
         url: '../controller/dashboard/ctrl_dashboard.php',
         type: 'POST',
     }).done(function (reply) {
-        var data = JSON.parse(reply);
-        var clientes = data[0]['clientes'];
-        var productos = data[0]['productos'];
-        var proveedores = data[0]['proveedores'];
-        var ventas = data[0]['ventas'];
-        $("#clientes").html(clientes);
-        $("#productos").html(productos);
-        $("#proveedores").html(proveedores);
-        $("#ventas").html(ventas);
+        //  var data = JSON.parse(reply);
+        //  var clientes = data[0]['clientes'];
+        //  var productos = data[0]['productos'];
+        //  var proveedores = data[0]['proveedores'];
+        //  var ventas = data[0]['ventas'];
+        //  $("#clientes").html(clientes);
+        //  $("#productos").html(productos);
+        //  $("#proveedores").html(proveedores);
+        //  $("#ventas").html(ventas);
+
     })
 }
 function dashboardDate() {
@@ -25,14 +26,14 @@ function dashboardDate() {
         type: 'POST',
     }).done(function (reply) {
         var data = JSON.parse(reply);
-        $("#d_productos").html(data[0]['productos']);
-        $("#d_clientes").html(data[0]['clientes']);
-        $("#d_proveedores").html(data[0]['proveedores']);
-        $("#d_ventas").html(data[0]['ventas']);
-        $("#fecha_productos").html(fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
-        $("#fecha_clientes").html(fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
-        $("#fecha_proveedores").html(fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
-        $("#fecha_ventas").html(fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
-
+        // $("#d_productos").html(data[0]['productos']);
+        // $("#d_clientes").html(data[0]['clientes']);
+        // $("#d_proveedores").html(data[0]['proveedores']);
+        // $("#d_ventas").html(data[0]['ventas']);
+        // $("#fecha_productos").html(fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
+        // $("#fecha_clientes").html(fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
+        // $("#fecha_proveedores").html(fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
+        // $("#fecha_ventas").html(fecha.getDate() + " de " + meses[fecha.getMonth()] + " del " + fecha.getFullYear());
+        console.log(reply);
     })
 }
