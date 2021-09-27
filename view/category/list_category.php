@@ -1,25 +1,14 @@
 <script type="text/javascript" src="../js/functCate.js?rev=<?php echo time(); ?>"></script>
+
 <section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Almacen</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item text-blue">Almacen</li>
-                    <li class="breadcrumb-item text-blue">Catalogo</li>
-                    <li class="breadcrumb-item active">Categorias</li>
-                </ol>
-            </div>
-        </div>
-    </div>
+    <h1 class="h3 mb-4 text-gray-800">Almacen</h1>
 </section>
+
 <!-- Main content -->
 <section class="content">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Categorias</h3>
+            <h6 class="m-0 font-weight-bold text-primary">Categorias</h6>
         </div>
         <div class="card-body">
             <div class="row mb-3">
@@ -32,11 +21,15 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <button type="button" class="btn btn-block btn-default" data-toggle="modal"
-                        onclick="notcloseModal('#modal-register-category');"
-                        data-target="#modal-register-category">Agregar Categoria
-                        &nbsp;<i class="fas fa-cubes"></i>
+                     
+                    <button class="btn btn-block btn-primary" onclick="notcloseModal('#modal-register-category');"
+                     data-target="#modal-register-category">
+                        <span class="text-white">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span class="text">Agregar</span>
                     </button>
+                    
                 </div>
             </div>
 
@@ -68,8 +61,8 @@
 </div>
 <div class="modal fade" id="modal-register-category">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content bg-lightblue">
-            <div class="modal-header">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
                 <h4 class="modal-title"><i class="fas fa-cubes"></i>&nbsp; Nueva Categoria</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cleanInputs();">
                     <span aria-hidden="true">&times;</span>
@@ -115,28 +108,26 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between bg-light">
-                    <button id="show_password" class="btn btn-warning" type="button" onclick="show_Textarea(textarea)">
+                    <button id="show_password" class="btn btn-warning btn-sm" type="button" onclick="show_Textarea(textarea)">
                         <span class="fa fa-toggle-on icon"></span>&nbsp;<label id="text_btnarea">Descripcion
                         </label>
                     </button>
                     <div class="btn-group drop-up">
-                        <button type="button" class="btn btn-danger btn-lg" onclick="cleanInputs();"
+                        <button type="button" class="btn btn-danger btn-sm" onclick="cleanInputs();"
                             data-dismiss="modal">Cancelar
                             &nbsp;<i class="fas fa-times"></i></button>
-                        <button type="button" class="btn btn-primary btn-lg" onclick="registCategory();">Guardar Cambios
+                        <button type="button" class="btn btn-primary btn-sm" onclick="registCategory();">Guardar Cambios
                             &nbsp;<i class="fas fa-save"></i></button>
                     </div>
                 </div>
             </form>
         </div>
-
     </div>
-
 </div>
 <div class="modal fade" id="modal-edit-category">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content bg-info">
-            <div class="modal-header">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
                 <h4 class="modal-title"><i class="fas fa-sitemap"></i>&nbsp; Editar Categoria</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -182,15 +173,15 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between bg-light">
-                    <button id="show_password" class="btn btn-warning" type="button"
+                    <button id="show_password" class="btn btn-warning btn-sm" type="button"
                         onclick="show_Textarea(edit_textarea)">
                         <span class="fa fa-toggle-off icon"></span>&nbsp;<label id="text_btnarea">Descripcion
                         </label>
                     </button>
                     <div class="btn-group drop-up">
-                        <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Cancelar
+                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancelar
                             &nbsp;<i class="fas fa-times"></i></button>
-                        <button type="button" class="btn btn-primary btn-lg" onclick="editCategory();">Guardar Cambios
+                        <button type="button" class="btn btn-primary btn-sm" onclick="editCategory();">Guardar Cambios
                             &nbsp;<i class="fas fa-save"></i></button>
                     </div>
                 </div>
@@ -202,8 +193,8 @@
 </div>
 <div class="modal fade" id="modal-view-category">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content bg-primary">
-            <div class="modal-header">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
                 <h4 class="modal-title"><i class="fas fa-eye"></i>&nbsp; Informacion Categoria</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -225,5 +216,8 @@
     <!-- /.modal-content -->
 </div>
 
-<script src="../templates/main/category/list_category.js"></script>
-<script src="../templates/templates_login/sweetAlert/sweetalert2.js"></script>
+<!-----Script Category----->
+<script src="../startbootstrap/js/category/list_category.js"></script>
+
+<!----Sweet Alert --->
+<script src="../startbootstrap/sweetAlert/sweetalert2.js"></script>

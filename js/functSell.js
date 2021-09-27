@@ -213,7 +213,7 @@ $("#btnConfirmarVenta").click(function (e) {
         Swal.fire({
             title: 'Procesar Venta',
             html: 'Al procesar la venta los productos seleccionados deben ser revisados por sus cantidad en stock.',
-            imageUrl: '../templates/main/category/images/banner-de-venta.png',
+            imageUrl: '../startbootstrap/img/banner-de-venta.png',
             imageWidth: 100,
             imageHeight: 100,
             imageAlt: 'Custom image',

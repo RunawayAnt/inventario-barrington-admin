@@ -442,9 +442,16 @@ $(document).ready(function() {
     searchforDetails(id);
 
 });
-</script><!-- Toastr -->
-<link rel="stylesheet" href="../templates/plugins/toastr/toastr.min.css">
-<script src="../templates/main/sell/tem_sell.js"></script>
-<script src="../templates/templates_login/sweetAlert/sweetalert2.js"></script>
-<!-- Toastr -->
-<script src="../templates/plugins/toastr/toastr.min.js"></script>
+</script>
+
+<!-- Style Toastr -->
+<link rel="stylesheet" href="../startbootstrap/plugins/toastr/toastr.min.css">
+
+<!----Script sell -->
+<script src="../startbootstrap/js/sell/tem_sell.js"></script>
+
+<!----Sweet Alert--->
+<script src="../startbootstrap/sweetAlert/sweetalert2.js"></script>
+
+<!-- Script Toastr -->
+<script src="../startbootstrap/plugins/toastr/toastr.min.js"></script>

@@ -236,7 +236,7 @@ $('#table_category').on('click', '.borrar', function () {
     Swal.fire({
         title: 'Eliminar Categoria!',
         html: '<a style="color: red;">Por favor antes de eliminar, los productos asignados deben ser cambiados de categoria.</a>',
-        imageUrl: '../templates/main/category/images/peligro.png',
+        imageUrl: '../startbootstrap/img/peligro.png',
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Custom image',
@@ -262,7 +262,7 @@ function deleteCategory(idCateg) {
         if (reply > 0) {
             Swal.fire({
                 title: "Categoria eliminada",
-                imageUrl: '../templates/main/category/images/peligro.png',
+                imageUrl: '../startbootstrap/img/peligro.png',
                 imageWidth: 150,
                 imageHeight: 150,
                 imageAlt: 'Custom image'
