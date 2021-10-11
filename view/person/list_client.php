@@ -1,25 +1,12 @@
 <script type="text/javascript" src="../js/functClie.js?rev=<?php echo time(); ?>"></script>
 <section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Almacen</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item text-blue">Almacen</li>
-                    <li class="breadcrumb-item text-blue">Catalogo</li>
-                    <li class="breadcrumb-item active">Clientes</li>
-                </ol>
-            </div>
-        </div>
-    </div>
+    <h1 class="h3 mb-4 text-gray-800">Almacen</h1>
 </section>
 <!-- Main content -->
 <section class="content">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Clientes</h3>
+            <h6 class="m-0 font-weight-bold text-primary">Clientes</h6>
         </div>
         <div class="card-body">
             <div class="row mb-3">
@@ -32,11 +19,15 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <button type="button" class="btn btn-block btn-default" data-toggle="modal"
-                        onclick="notcloseModal('#modal-register-client');" data-target="#modal-register-client">Agregar
-                        Cliente
-                        &nbsp;<i class="fas fa-users"></i>
+                   
+                    <button class="btn btn-block btn-primary" onclick="notcloseModal('#modal-register-client');"
+                    data-target="#modal-register-client">
+                        <span class="text-white">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span class="text">Agregar</span>
                     </button>
+
                 </div>
             </div>
 
@@ -74,8 +65,8 @@
 </div>
 <div class="modal fade" id="modal-register-client">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content bg-lightblue">
-            <div class="modal-header">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
                 <h4 class="modal-title"><i class="fas fa-users"></i>&nbsp; Nuevo Cliente</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cleanInputs();">
                     <span aria-hidden="true">&times;</span>
@@ -189,10 +180,10 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between bg-light">
-                    <button type="button" class="btn btn-danger btn-lg" onclick="cleanInputs();"
+                    <button type="button" class="btn btn-danger btn-sm" onclick="cleanInputs();"
                         data-dismiss="modal">Cancelar
                         &nbsp;<i class="fas fa-times"></i></button>
-                    <button type="button" class="btn btn-primary btn-lg" onclick="registClient();">Guardar Cambios
+                    <button type="button" class="btn btn-primary btn-sm" onclick="registClient();">Guardar Cambios
                         &nbsp;<i class="fas fa-save"></i></button>
                 </div>
             </form>
@@ -203,8 +194,8 @@
 </div>
 <div class="modal fade" id="modal-edit-client">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content bg-lightblue">
-            <div class="modal-header">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
                 <h4 class="modal-title"><i class="fas fa-users"></i>&nbsp; Editar Cliente</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cleanInputs();">
                     <span aria-hidden="true">&times;</span>
@@ -318,10 +309,10 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between bg-light">
-                    <button type="button" class="btn btn-danger btn-lg" onclick="cleanInputs();"
+                    <button type="button" class="btn btn-danger btn-sm" onclick="cleanInputs();"
                         data-dismiss="modal">Cancelar
                         &nbsp;<i class="fas fa-times"></i></button>
-                    <button type="button" class="btn btn-primary btn-lg" onclick="editClient();">Guardar Cambios
+                    <button type="button" class="btn btn-primary btn-sm" onclick="editClient();">Guardar Cambios
                         &nbsp;<i class="fas fa-save"></i></button>
                 </div>
             </form>
@@ -330,5 +321,9 @@
     </div>
 
 </div>
-<script src="../templates/main/person/list_client.js"></script>
-<script src="../templates/templates_login/sweetAlert/sweetalert2.js"></script>
+
+<!----Script Client-->
+<script src="../startbootstrap/js/person/list_client.js"></script>
+
+<!----Sweet Alert --->
+<script src="../startbootstrap/sweetAlert/sweetalert2.js"></script>

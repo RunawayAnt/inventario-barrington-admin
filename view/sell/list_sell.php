@@ -1,37 +1,16 @@
 <script type="text/javascript" src="../js/functlistSell.js?rev=<?php echo time(); ?>"></script>
 <section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Ventas</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item text-blue">Ventas</li>
-                    <li class="breadcrumb-item active">Ventas</li>
-                </ol>
-            </div>
-        </div>
-    </div>
+    <h1 class="h3 mb-4 text-gray-800">Venta</h1>
 </section>
 <!-- Main content -->
 <section class="content">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Lista Ventas</h3>
+            <h6 class="m-0 font-weight-bold text-primary">Lista de Ventas</h6>
         </div>
         <div class="card-body">
             <div class="row mb-3">
-                <div class="col-3">
-
-                </div>
-                <div class="col-3">
-
-                </div>
-                <div class="col-3">
-
-                </div>
-                <div class="col-3">
+                <div class="col-6">
 
                     <div class="input-group">
                         <input type="text" class="global_filter form-control" placeholder="Buscar" id="global_filter">
@@ -215,7 +194,15 @@
     </div>
     <!-- /.modal-content -->
 </div>
-<link rel="stylesheet" href="../templates/plugins/toastr/toastr.min.css">
-<script src="../templates/main/sell/list_sell.js"></script>
-<script src="../templates/templates_login/sweetAlert/sweetalert2.js"></script>
-<script src="../js/JsBarcode.all.min.js"></script>
+
+
+<link rel="stylesheet" href="../startbootstrap/plugins/toastr/toastr.min.css">
+
+<!----Script List sell --->
+<script src="../startbootstrap/js/sell/list_sell.js"></script>
+
+<!----JSBarcode --->
+<script src="../startbootstrap/plugins/Barcode/JsBarcode.all.min.js"></script>
+
+<!----Sweet Alert --->
+<script src="../startbootstrap/sweetAlert/sweetalert2.js"></script>

@@ -281,7 +281,7 @@ $('#table_provider').on('click', '.borrar', function () {
     Swal.fire({
         title: 'Eliminar Proveedor',
         html: '<a style="color: red;">Se perderan los datos de proveedor registrado.</a>',
-        imageUrl: '../templates/main/category/images/peligro.png',
+        imageUrl: '../startbootstrap/img/peligro.png',
         imageWidth: 100,
         imageHeight: 100,
         imageAlt: 'Custom image',

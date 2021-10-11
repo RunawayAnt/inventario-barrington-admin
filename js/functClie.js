@@ -195,7 +195,7 @@ $('#table_client').on('click', '.borrar', function () {
     Swal.fire({
         title: 'Eliminar Cliente',
         html: '<a style="color: red;">Se perderan los datos del cliente registrado.</a>',
-        imageUrl: '../templates/main/category/images/peligro.png',
+        imageUrl: '../startbootstrap/img/peligro.png',
         imageWidth: 100,
         imageHeight: 100,
         imageAlt: 'Custom image',

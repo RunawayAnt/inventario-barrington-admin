@@ -24,6 +24,7 @@ if (!isset($_SESSION['se_user'])) {
     <link rel="stylesheet" href="../templates/plugins/DataTable/datatables.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -248,10 +249,6 @@ if (!isset($_SESSION['se_user'])) {
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper" id="content_main">
 
-
-
-
-
             <script type="text/javascript" src="../js/functDashboard.js?rev=<?php echo time(); ?>"></script>
 
             <section class="content">
@@ -463,6 +460,7 @@ if (!isset($_SESSION['se_user'])) {
             <script src="../templates/templates_login/sweetAlert/sweetalert2.js"></script>
             <!-- Toastr -->
             <script src="../templates/plugins/toastr/toastr.min.js"></script>
+        
         </div>
 
         <aside class="control-sidebar control-sidebar-dark">
@@ -486,16 +484,16 @@ if (!isset($_SESSION['se_user'])) {
     <script src="../templates/plugins/jquery-mapael/maps/usa_states.min.js"></script>
     <!-- ChartJS -->
     <script src="../templates/plugins/chart.js/Chart.min.js"></script>
-    <!-- TABLE SCRIPTS -->
+    <!-- TABLE SCRIPTS 🟠-->
     <script src="../templates/plugins/DataTable/datatables.min.js"></script>
     <!-- InputMask -->
-    <script src="../templates/plugins/moment/moment.min.js"></script>
     <script src="../templates/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+
     <!-- date-range-picker -->
     <script>
     $(document).ready(function() {
-        dashboard();
-        dashboardDate();
+        // dashboard();
+        // dashboardDate();
     });
     //Idioma tables
     var idioma_espanol = {
