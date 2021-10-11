@@ -1,7 +1,7 @@
 # Web Barrington
 
 ** Note **
-JXJXJX PXDNX
+ 
 
 ## Collaborator
 
