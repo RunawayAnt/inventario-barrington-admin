@@ -2,7 +2,7 @@
     class modelConn{
         private $server;
         private $user;
-        private $passwoard;
+        private $password;
         private $database;
         public $conn;
 
@@ -10,11 +10,11 @@
         public function __construct(){
         $this->server = "localhost";
         $this->user = "root";
-        $this->database = "";
+        $this->password = "1702";
         $this->database = "dbbarrint";
         }
         function Connect(){
-        $this->conn = new mysqli($this->server,$this->user,$this->passwoard,
+        $this->conn = new mysqli($this->server,$this->user,$this->password,
         $this->database);
         $this->conn->set_charset("utf8");
         }

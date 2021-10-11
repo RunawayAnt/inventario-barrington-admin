@@ -1,83 +1,95 @@
 
-//Carga Lista
+//?___Cargar Listas
+
 $(document).ready(function () {
-    // listPCategory();
-    // listPProveedor();
+    listPCategory();
+    listPProveedor();
     listProducts();
 });
 
-// //Evitamos cerrar los modal
-// function notcloseModal(nomModal) {
-//     $(nomModal).modal({ backdrop: 'static', keyboard: false });
-// }
-// //Filtro Global del input de la tabla al input creado
-// function filterGlobal() {
-//     $('#table_product').DataTable().search(
-//         $('#global_filter').val(),
-//     ).draw();
-// }
+//?___Evitamos cerrar los elementos "modal" 
 
-// function enableNum(e) {
-//     //specialPars = [8, 37, 39, 46],
-//     var key = e.keyCode || e.which,
-//         keybr = String.fromCharCode(key).toLowerCase(),
-//         //letters = " áéíóúabcdefghijklmnñopqrstuvwxyz",
-//         numlet = ".1234567890"
-//     specialPars = [8, 37, 39, 46],
-//         specialKey = false;
+function notcloseModal(nomModal) {
+    $(nomModal).modal({ backdrop: 'static', keyboard: false });
+}
 
+//?____Filtro Global del input de la tabla al input creado
 
-//     for (var i in specialPars) {
-//         if (key == specialPars[i]) {
-//             specialKey = true;
-//             break;
-//         }
-//     }
+function filterGlobal() {
+    $('#table_product').DataTable().search(
+        $('#global_filter').val(),
+    ).draw();
+}
 
-//     if (numlet.indexOf(keybr) == -1 && !specialKey) {
-//         return false;
-//     }
-// }
-// function enableEnt(e) {
-//     //specialPars = [8, 37, 39, 46],
-//     var key = e.keyCode || e.which,
-//         keybr = String.fromCharCode(key).toLowerCase(),
-//         //letters = " áéíóúabcdefghijklmnñopqrstuvwxyz",
-//         numlet = "1234567890"
-//     specialPars = [8],
-//         specialKey = false;
+//?____Funcion para evitar letras
+
+function enableNum(e) {
+    //specialPars = [8, 37, 39, 46],
+    var key = e.keyCode || e.which,
+        keybr = String.fromCharCode(key).toLowerCase(),
+        //letters = " áéíóúabcdefghijklmnñopqrstuvwxyz",
+        numlet = ".1234567890"
+    specialPars = [8, 37, 39, 46],
+        specialKey = false;
 
 
-//     for (var i in specialPars) {
-//         if (key == specialPars[i]) {
-//             specialKey = true;
-//             break;
-//         }
-//     }
+    for (var i in specialPars) {
+        if (key == specialPars[i]) {
+            specialKey = true;
+            break;
+        }
+    }
 
-//     if (numlet.indexOf(keybr) == -1 && !specialKey) {
-//         return false;
-//     }
-// }
-// function enableLettrs(e) {
-//     //specialPars = [8, 37, 39, 46],
-//     var key = e.keyCode || e.which,
-//         keybr = String.fromCharCode(key).toLowerCase(),
-//         letters = " áéíóúabcdefghijklmnñopqrstuvwxyz",
-//         specialPars = [8, 37],
-//         specialKey = false;
+    if (numlet.indexOf(keybr) == -1 && !specialKey) {
+        return false;
+    }
+}
 
-//     for (var i in specialPars) {
-//         if (key == specialPars[i]) {
-//             specialKey = true;
-//             break;
-//         }
-//     }
+//?____Funcion para evitar letras y otros simbolos alfanumericos
 
-//     if (letters.indexOf(keybr) == -1 && !specialKey) {
-//         return false;
-//     }
-// }
+function enableEnt(e) {
+    //specialPars = [8, 37, 39, 46],
+    var key = e.keyCode || e.which,
+        keybr = String.fromCharCode(key).toLowerCase(),
+        //letters = " áéíóúabcdefghijklmnñopqrstuvwxyz",
+        numlet = "1234567890"
+    specialPars = [8],
+        specialKey = false;
+
+
+    for (var i in specialPars) {
+        if (key == specialPars[i]) {
+            specialKey = true;
+            break;
+        }
+    }
+
+    if (numlet.indexOf(keybr) == -1 && !specialKey) {
+        return false;
+    }
+}
+
+//?____Funcion para evitar Numeros
+
+function enableLettrs(e) {
+    //specialPars = [8, 37, 39, 46],
+    var key = e.keyCode || e.which,
+        keybr = String.fromCharCode(key).toLowerCase(),
+        letters = " áéíóúabcdefghijklmnñopqrstuvwxyz",
+        specialPars = [8, 37],
+        specialKey = false;
+
+    for (var i in specialPars) {
+        if (key == specialPars[i]) {
+            specialKey = true;
+            break;
+        }
+    }
+
+    if (letters.indexOf(keybr) == -1 && !specialKey) {
+        return false;
+    }
+}
 
 // //Desactivar o Activar Text-area
 // function show_Textarea(change) {

@@ -28,13 +28,10 @@ session_start();
                         </div>
                         <div class="col-4">
                             <!-- ES: Comienza boton 'Agregar' producto -->
-                            <!-- <button class="btn btn-block btn-primary" onclick="notcloseModal('#modal-register-product');"
+                            <button class="btn btn-block btn-primary" onclick="notcloseModal('#modal-register-product');"
                                 data-target="#modal-register-product">
-                                <span class="text-white">
-                                    <i class="fas fa-plus"></i>
-                                </span>
-                                <span class="text">Agregar</span>
-                            </button> -->
+                                <span class="">Agregar</span>
+                            </button>
                             <!-- ES: Termina boton 'Agregar' producto -->
                         </div>
                     </div>
@@ -45,10 +42,11 @@ session_start();
                                 <th>Nro</th>
                                 <th>Codigo</th>
                                 <th>Nombre</th>
-                                <th>Unidad de Medida</th>  
-                                <th>Precio Entrada</th>
-                                <th>Precio Salida</th>
-                                <th>Minimo Inventario</th> 
+                                <!-- <th>Unidad de Medida</th>   -->
+                                <!-- <th>Precio Entrada</th> -->
+                                <!-- <th>Precio Salida</th> -->
+                                <th>Precio</th>
+                                <!-- <th>Minimo Inventario</th>  -->
                                 <th>Existencia</th>
                                 <th>Creacion</th>
                                 <th>Estado</th>
@@ -60,10 +58,11 @@ session_start();
                                 <td>Nro</td>
                                 <td>Codigo</td>
                                 <td>Nombres</td>
-                                <td>Unidad de Medida</td>
-                                <td>Precio Entrada</td>
-                                <td>Precio Salida</td>
-                                <td>Minimo Inventario</td>
+                                <!-- <td>Unidad de Medida</td> -->
+                                <!-- <th>Precio Entrada</th> -->
+                                <!-- <th>Precio Salida</th> -->
+                                <th>Precio</th>
+                                <!-- <td>Minimo Inventario</td> -->
                                 <td>Existencia</td>
                                 <td>Creacion</td>
                                 <td>Estado</td>
@@ -78,7 +77,7 @@ session_start();
 <!-- ES: Termina contenedor producto-->
 
     <!-- ES: Comienza modulo o ventana para registrar producto-->
-    <!-- <div class="modal fade" id="modal-register-product">
+    <div class="modal fade" id="modal-register-product">
         <div class="modal-dialog modal-xl">
             <div class="modal-content bg-lightblue">
                 <div class="modal-header">
@@ -89,24 +88,24 @@ session_start();
                 </div>
                 <form>
                     <div class="modal-body bg-light">
-
                         <div class="callout">
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <label title="Importante">Nombre del Producto<i class="text-danger"
+                                                <label title="Importante">Nombre<i class="text-danger"
                                                         title="Importante">*</i></label>
                                             </div>
                                             <div class="col-sm-6">
                                                 <label class="block" id="alert_cli_nombres" style="display:none"></label>
                                             </div>
                                         </div>
-
                                         <input type="text" minlegth="10" maxlength="100" id="prod_nom" class="form-control"
-                                            onpaste="return false" placeholder="ejemplo: Pedro Luis" required
+                                            onpaste="return false" placeholder=".." required
                                             onkeypress="return enableLettrs(event)">
+                                        <!-- <input type="text" minlegth="10" maxlength="100" id="prod_nom" class="form-control"
+                                            onpaste="return false" placeholder=".." required> -->
                                     </div>
                                 </div>
                                 <div class="col-sm-8">
@@ -114,7 +113,7 @@ session_start();
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <label title="Importante">Caracteristicas<i class="text-danger"
-                                                        title="Importante">*</i></label>
+                                                        title="Importante"></i></label>
                                             </div>
                                             <div class="col-sm-6">
                                                 <label class="block" id="alert_cli_nombres" style="display:none"></label>
@@ -179,7 +178,7 @@ session_start();
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <label title="Importante">Precio Entrada<i class="text-danger"
+                                                <label title="Importante">Precio de Entrada<i class="text-danger"
                                                         title="Importante">*</i></label>
                                             </div>
                                             <div class="col-sm-6">
@@ -190,10 +189,12 @@ session_start();
 
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">s/</span>
+                                                <span class="input-group-text">S/.</span>
                                             </div>
                                             <input type="text" maxlength="30" id="prod_precentrada" placeholder="00.00"
                                                 class="form-control" onkeypress="return enableNum(event)">
+                                            <!-- <input type="text" maxlength="30" id="prod_precentrada" placeholder="00.00"
+                                                class="form-control"> -->
                                             <div class="input-group-append">
                                                 <div class="input-group-text"><i class="fas fa-chevron-down"></i></div>
                                             </div>
@@ -205,21 +206,22 @@ session_start();
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <label title="Importante">Precio Salida<i class="text-danger"
+                                                <label title="Importante">Precio de Salida<i class="text-danger"
                                                         title="Importante">*</i></label>
                                             </div>
                                             <div class="col-sm-6">
                                                 <label class="block" id="alert_cli_nombres" style="display:none"></label>
                                             </div>
                                         </div>
-
-
+                                        
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">s/</span>
+                                                <span class="input-group-text">S/.</span>
                                             </div>
                                             <input type="text" maxlength="30" id="prod_precsalida" class="form-control"
                                                 placeholder="00.00" onkeypress="return enableNum(event)">
+                                            <!-- <input type="text" maxlength="30" id="prod_precsalida" class="form-control"
+                                                placeholder="00.00"> -->
                                             <div class="input-group-append">
                                                 <div class="input-group-text"><i class="fas fa-chevron-up"></i></div>
                                             </div>
@@ -269,6 +271,8 @@ session_start();
                                             </div>
                                             <input type="text" maxlength="30" id="prod_mini" class="form-control"
                                                 placeholder="0000" onkeypress="return enableEnt(event)">
+                                            <!-- <input type="text" maxlength="30" id="prod_mini" class="form-control"
+                                                placeholder="0000"> -->
                                         </div>
                                     </div>
                                 </div>
@@ -289,6 +293,8 @@ session_start();
                                             </div>
                                             <input type="text" class="form-control" id="prod_cant" class="form-control"
                                                 placeholder="0000" onkeypress="return enableEnt(event)">
+                                            <!-- <input type="text" class="form-control" id="prod_cant" class="form-control"
+                                                placeholder="0000"> -->
                                         </div>
                                     </div>
                                 </div>
@@ -300,14 +306,16 @@ session_start();
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between bg-light">
-                        <button id="show_password" class="btn btn-warning" type="button"
+                        <!-- <button id="show_password" class="btn btn-warning" type="button"
                             onclick="show_Textarea(prod_descrip)">
                             <span class="fa fa-toggle-on icon"></span>&nbsp;<label id="text_btnarea">Caracteristica
                             </label>
-                        </button>
+                        </button> -->
                         <div class="btn-group drop-up">
-                            <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal"
+                            <!-- <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal"
                                 onclick="cleanInputs();">Cancelar
+                                &nbsp;<i class="fas fa-times"></i></button> -->
+                            <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Cancelar
                                 &nbsp;<i class="fas fa-times"></i></button>
                             <button type="button" class="btn btn-primary btn-lg" onclick="registProduct();">Guardar Cambios
                                 &nbsp;<i class="fas fa-save"></i></button>
@@ -318,7 +326,7 @@ session_start();
 
         </div>
 
-    </div> -->
+    </div>
     <!-- ES: Termina modulo o ventana para registrar producto-->
 
     <!-- ES: Comienza modulo o ventana para editar producto-->
@@ -572,4 +580,4 @@ session_start();
 <script src="../startbootstrap/sweetAlert/sweetalert2.js"></script>
 
 <!----JsBarcode----->
-<script src="../startbootstrap/plugins/JsBarcode.all.min.js"></script>
+<script src="../startbootstrap/plugins/Barcode/JsBarcode.all.min.js"></script>

@@ -1,4 +1,11 @@
-/**Funcion para listar productos en la tabla 'table_product' */
+/*
+ * **LISTAR PRODUCTOS EN TABLA PRODUCTOS
+ */
+
+/* ---------------------------------------------------------------
+?Funcion para listar los productos agregados en la tabla
+------------------------------------------------------------------*/
+
 function listProducts() {
     table = $("#table_product").DataTable({
         "ordering": true,
@@ -15,28 +22,38 @@ function listProducts() {
         },
         "columns": [
             { "data": "posicion" },
-            { "data": "codigobarras", render: function (data) {
-                    return "<script>  JsBarcode('#barcode" + data + "', '" + data + "', { format: 'codabar',width: 1,height: 40,});</script> <svg id='barcode" + data + "'></svg>";
+            {
+                "data": "codigobarras", render: function (data) {
+                    return "<script>  JsBarcode('#barcode" + data + "', '" + data + "', { format: 'codabar',width: 1,height: 20,});</script> <svg id='barcode" + data + "'></svg>";
                 }
             },
             { "data": "nombre" },
-            { "data": "unidad" },
+            // { "data": "unidad" },
 
-            {"data": "precioentrada", render: function (data) {
+            // {
+            //     "data": "precioentrada", render: function (data) {
+            //         return "S/ " + Number.parseFloat(data).toFixed(2);
+            //     }
+            // },
+            {
+                "data": "preciosalida", render: function (data) {
                     return "S/ " + Number.parseFloat(data).toFixed(2);
                 }
             },
-            {"data": "preciosalida", render: function (data) {
-                    return "S/ " + Number.parseFloat(data).toFixed(2);
+            // { "data": "mininventario" },
+            {
+
+                "data": "cantidad", render: function (data, type, row) {
+                    if (data <= parseInt(row.mininventario)) {
+                        return "<h5 class='text-danger'><i class='fas fa-long-arrow-alt-down'></i> " + data + "</h5>";
+                    } else {
+                        return "<h5 class='text-success'><i class='fas fa-long-arrow-alt-up'></i> " + data + "</h5>";
+                    }
                 }
             },
-            {"data": "mininventario"},
-            {"data": "cantidad", render: function (data, type, row) {
-                    return "<h5><i class='fas fa-arrow-down'></i> " + data + "</h5>";
-                }
-            },
-            {"data": "creacion" },
-            {"data": "estado", render: function (data, type, row) {
+            { "data": "creacion" },
+            {
+                "data": "estado", render: function (data, type, row) {
                     if (data == 'Activo') {
                         return "<span class='btn btn-success btn-sm'>" + data + "</span>&nbsp;" +
                             "<button class='estado btn btn-sm' href='#'>" +
@@ -79,152 +96,245 @@ function listProducts() {
     });
 }
 
-// function listPCategory() {
-//     $.ajax({
-//         url: '../controller/product/ctrl_selectc_product.php',
-//         type: 'POST'
-//     }).done(function (reply) {
-//         let data = JSON.parse(reply);
-//         let cadena = "";
-//         if (data.length > 0) {
-//             cadena += "<option selected disabled value='a'>Selecciona Categoria</option>";
-//             for (var i = 0; i < data.length; i++) {
-//                 cadena += "<option value='" + data[i][0] + "'>" + data[i][1] + "</option>";
-//             }
-//             $("#select_category").html(cadena);
-//             $("#select_category_edt").html(cadena);
-//         } else {
-//             cadena += "<option id='selectNull' class='text-danger'>Select vacio</option>";
-//             $("#select_category").html(cadena);
-//             $("#select_category_edt").html(cadena);
+/*
+ * **OPERACIONES PARA REGISTRO DE NUEVO PRODUCTO
+ */
 
-//         }
-//     })
-// }
+/* ---------------------------------------------------------------
+?Funcion para listar categorias dentro del formulario 'registrar producto'
+------------------------------------------------------------------*/
 
-// function listPProveedor() {
-//     $.ajax({
-//         url: '../controller/product/ctrl_selectp_product.php',
-//         type: 'POST'
-//     }).done(function (reply) {
-//         let data = JSON.parse(reply);
-//         let cadena = "";
-//         if (data.length > 0) {
-//             cadena += "<option selected disabled value='a'>Selecciona Proveedor</option>";
-//             for (var i = 0; i < data.length; i++) {
-//                 cadena += "<option value='" + data[i][0] + "'>" + data[i][1] + "</option>";
-//             }
-//             $("#select_provider").html(cadena);
-//             $("#select_provider_edt").html(cadena);
+function listPCategory() {
+    $.ajax({
+        url: '../controller/product/ctrl_selectc_product.php',
+        type: 'POST'
+    }).done(function (reply) {
+        let data = JSON.parse(reply);
+        let cadena = "";
+        if (data.length > 0) {
+            cadena += "<option selected disabled value='a'>Selecciona Categoria</option>";
+            for (var i = 0; i < data.length; i++) {
+                cadena += "<option value='" + data[i][0] + "'>" + data[i][1] + "</option>";
+            }
+            $("#select_category").html(cadena);
+            $("#select_category_edt").html(cadena);
+        } else {
+            cadena += "<option id='selectNull' class='text-danger'>Select vacio</option>";
+            $("#select_category").html(cadena);
+            $("#select_category_edt").html(cadena);
 
-//         } else {
-//             cadena += "<option id='selectNull' class='text-danger'>Select vacio</option>";
-//             $("#select_provider").html(cadena);
-//             $("#select_provider_edt").html(cadena);
+        }
+    })
+}
 
-//         }
-//     })
+/* ---------------------------------------------------------------
+?Funcion para listar proveedores dentro del formulario 'registrar producto'
+------------------------------------------------------------------*/
 
-// }
+function listPProveedor() {
+    $.ajax({
+        url: '../controller/product/ctrl_selectp_product.php',
+        type: 'POST'
+    }).done(function (reply) {
+        let data = JSON.parse(reply);
+        let cadena = "";
+        if (data.length > 0) {
+            cadena += "<option selected disabled value='a'>Selecciona Proveedor</option>";
+            for (var i = 0; i < data.length; i++) {
+                cadena += "<option value='" + data[i][0] + "'>" + data[i][1] + "</option>";
+            }
+            $("#select_provider").html(cadena);
+            $("#select_provider_edt").html(cadena);
 
-// function rand_code(lettf, lettl, chars, lon) {
-//     code = "";
-//     for (x = 0; x < lon; x++) {
-//         rand = Math.floor(Math.random() * chars.length);
-//         code += chars.substr(rand, 1);
-//     }
-//     return lettf + code + lettl;
-// }
-// caracteres = "0123456789";
-// longitud = 8;
+        } else {
+            cadena += "<option id='selectNull' class='text-danger'>Select vacio</option>";
+            $("#select_provider").html(cadena);
+            $("#select_provider_edt").html(cadena);
 
-// function registProduct() {
-//     let codigobarras = rand_code('D', 'A', caracteres, longitud)
-//     let nombrepr = $("#prod_nom").val();
-//     let caractpr = $("#prod_descrip").val();
-//     let categoriapr = $("#select_category").val();
-//     let proveedorpr = $("#select_provider").val();
-//     let precioentradapr = $("#prod_precentrada").val();
-//     let preciosalidapr = $("#prod_precsalida").val();
-//     let unidadpr = $("#select_unid").val();
-//     let inventariomin = $("#prod_mini").val();
-//     let cantidad = $("#prod_cant").val();
-//     let idusarios = $("#usuarioid").val();
+        }
+    })
 
-//     //console.log(codigobarras + '-' + nombrepr + '-' + caractpr + '-' + categoriapr + '-' + proveedorpr + '-' + precioentradapr + '-' + preciosalidapr + '-' + unidadpr + '-' + inventariomin + '-' + cantidad + '-' + idusarios)
-//     //validateInputs(categ, 'nombre_categoria', 'alert_nombre_categoria');
-//     //validateInputs(descrip, 'textarea', 'alert_textarea');
-//     if (!nombrepr.trim() == '' && nombrepr.length > 2 && !codigobarras.trim() == '' && codigobarras.length > 2) {
+}
 
-//         $.ajax({
-//             url: '../controller/product/ctrl_register_product_op.php',
-//             type: 'POST',
-//             data: {
-//                 codeb: codigobarras,
-//                 nomb: nombrepr,
-//                 descrip: caractpr,
-//                 idcateg: categoriapr,
-//                 idprov: proveedorpr,
-//                 precentrada: precioentradapr,
-//                 precsalida: preciosalidapr,
-//                 unid: unidadpr,
-//                 mininv: inventariomin,
-//                 idusuario: idusarios
-//             }
-//         }).done(function (reply) {
-//             //console.log(reply);
-//             if (reply > 0) {
-//                 if (reply == 1) {
-//                     idCategory(cantidad);
-//                     $("#modal-register-category").modal('hide');
-//                     Swal.fire("Elemento registrado con exito", "Se ha registrado una nueva categoria.",
-//                         "success")
-//                         .then((result) => {
-//                             table.ajax.reload();
-//                             //location.reload();
-//                         })
-//                 } else {
-//                     return Swal.fire({
-//                         icon: 'warning',
-//                         title: 'Elemento existente',
-//                         text: 'El producto ya existe',
-//                     });
-//                 }
-//             } else {
-//                 Swal.fire({
-//                     icon: 'error',
-//                     title: 'Oops...',
-//                     text: 'Se ha detectado un error!',
-//                     footer: '<a href>Comuniquese con el equipo de soporte</a>'
-//                 })
-//             }
-//         })
-//     }
-// }
-// var id;
-// function idCategory(in_cantidad) {
-//     $.ajax({
-//         url: '../controller/product/ctrl_id_product.php',
-//         type: 'POST'
-//     }).done(function (reply) {
-//         var cat_id = JSON.parse(reply);
-//         id = cat_id[0][0];
-//         registerOperation(in_cantidad, id)
-//     })
-// }
-// function registerOperation(cantidad, id) {
-//     $.ajax({
-//         url: '../controller/product/ctrl_register_operation_op.php',
-//         type: 'POST',
-//         data: {
-//             idprod: id,
-//             cantid: cantidad
-//         }
-//     }).done(function (reply) {
-//         let data = JSON.parse(reply);
-//         console.log(data);
-//     })
-// }
+/* ---------------------------------------------------------------
+?Funcion para crear codigo de manera aleatoria a cada nuevo producto
+------------------------------------------------------------------*/
+
+function rand_code(lettf, lettl, chars, lon) {
+    code = "";
+    for (x = 0; x < lon; x++) {
+        rand = Math.floor(Math.random() * chars.length);
+        code += chars.substr(rand, 1);
+    }
+    return lettf + code + lettl;
+}
+
+caracteres = "0123456789";
+longitud = 8;
+
+/* ---------------------------------------------------------------
+?Funcion para registrar producto 
+------------------------------------------------------------------*/
+
+function registProduct() {
+    let codigobarras = rand_code('D', 'A', caracteres, longitud)
+    let nombrepr = $("#prod_nom").val();
+    let caractpr = $("#prod_descrip").val();
+    let categoriapr = $("#select_category").val();
+    let proveedorpr = $("#select_provider").val();
+    let precioentradapr = $("#prod_precentrada").val();
+    let preciosalidapr = $("#prod_precsalida").val();
+    let unidadpr = $("#select_unid").val();
+    let inventariomin = $("#prod_mini").val();
+    let cantidad = $("#prod_cant").val();
+    let idusarios = $("#usuarioid").val();
+
+    if (!nombrepr.trim() == '' && nombrepr.length > 2 && !codigobarras.trim() == '' && codigobarras.length > 2) {
+
+        $.ajax({
+            url: '../controller/product/ctrl_register_product_op.php',
+            type: 'POST',
+            data: {
+                codeb: codigobarras,
+                nomb: nombrepr,
+                descrip: caractpr,
+                idcateg: categoriapr,
+                idprov: proveedorpr,
+                precentrada: precioentradapr,
+                precsalida: preciosalidapr,
+                unid: unidadpr,
+                mininv: inventariomin,
+                idusuario: idusarios
+            }
+        }).done(function (reply) {
+
+            if (reply > 0) {
+                if (reply == 1) {
+                    idCategory(cantidad);
+                    $("#modal-register-category").modal('hide');
+                    Swal.fire("Elemento registrado con exito", "Se ha registrado un nuevo producto.",
+                        "success")
+                        .then((result) => {
+                            table.ajax.reload();
+                            //location.reload();
+                        })
+                } else {
+                    return Swal.fire({
+                        icon: 'warning',
+                        title: 'Elemento existente',
+                        text: 'El producto ya existe',
+                    });
+                }
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Se ha detectado un error!',
+                    footer: '<a href>Comuniquese con el equipo de soporte</a>'
+                })
+            }
+        })
+    }
+}
+
+/* ---------------------------------------------------------------
+?Funcion para registrar una operacion de entrada al mismo tiempo que el registro del producto
+------------------------------------------------------------------*/
+
+var id;
+function idCategory(in_cantidad) {
+    $.ajax({
+        url: '../controller/product/ctrl_id_product.php',
+        type: 'POST'
+    }).done(function (reply) {
+        var cat_id = JSON.parse(reply);
+        id = cat_id[0][0];
+        registerOperation(in_cantidad, id)
+    })
+}
+
+function registerOperation(cantidad, id) {
+    $.ajax({
+        url: '../controller/product/ctrl_register_operation_op.php',
+        type: 'POST',
+        data: {
+            idprod: id,
+            cantid: cantidad
+        }
+    }).done(function (reply) {
+        let data = JSON.parse(reply);
+        console.log(data);
+    })
+}
+
+
+/*
+ * **CAMBIAR ESTADO DEL PRODUCTO SELECCIONADO
+*/
+
+$('#table_product').on('click', '.estado', function () {
+    var data = table.row($(this).parents('tr')).data();
+    if (table.row(this).child.isShown()) {
+        var data = table.row(this).data();
+    }
+    if (data.estado == "Activo") {
+        Swal.fire({
+            title: '¿Desea inhabilitar el producto?',
+            html: '<a style="color: gray;">...</a>',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                checkEstatus(data.id_producto, 'Inactivo');
+            }
+        })
+    }
+    if (data.estado == "Inactivo") {
+        Swal.fire({
+            title: '¿Desa habilitar el producto?',
+            html: '<a style="color: gray;">...</a>',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                checkEstatus(data.id_producto, 'Activo');
+            }
+        })
+    }
+})
+
+/* ---------------------------------------------------------------
+?Funcion para cambiar estado del producto
+------------------------------------------------------------------*/
+
+function checkEstatus(in_id, in_status) {
+    //console.log(in_id + '-' + in_status);
+    $.ajax({
+        url: '../controller/product/ctrl_mestatus_product.php',
+        type: 'POST',
+        data: {
+            id_producto: in_id,
+            estado: in_status
+        }
+    }).done(function (reply) {
+        if (reply > 0) {
+            Swal.fire({
+                title: "Se ha cambiado el estado del producto",
+                icon: 'info'
+            }).then((result) => {
+                table.ajax.reload();
+            })
+        }
+    })
+}
+
+
 
 // var id_editProduct;
 // $('#table_product').on('click', '.editar', function () {
