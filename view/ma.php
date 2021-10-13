@@ -266,6 +266,9 @@ if (!isset($_SESSION['se_user'])) {
     <!-- Custom scripts for all pages-->
     <script src="../startbootstrap/js/sb-admin-2.min.js"></script>
 
+    <!-- ES: Script general-->
+    <script src="../startbootstrap/js/in-barrington-config.js"></script>
+
     <!----Scripts-->
     <script>
     

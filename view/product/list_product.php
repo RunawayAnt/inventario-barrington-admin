@@ -306,18 +306,17 @@ session_start();
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between bg-light">
-                        <!-- <button id="show_password" class="btn btn-warning" type="button"
+                        <button id="show_password" class="btn btn-warning btn-sm" type="button"
                             onclick="show_Textarea(prod_descrip)">
-                            <span class="fa fa-toggle-on icon"></span>&nbsp;<label id="text_btnarea">Caracteristica
-                            </label>
-                        </button> -->
+                            <span class="fa fa-toggle-on icon"></span>&nbsp;Caracteristica
+                        </button>
                         <div class="btn-group drop-up">
                             <!-- <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal"
                                 onclick="cleanInputs();">Cancelar
                                 &nbsp;<i class="fas fa-times"></i></button> -->
-                            <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Cancelar
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancelar
                                 &nbsp;<i class="fas fa-times"></i></button>
-                            <button type="button" class="btn btn-primary btn-lg" onclick="registProduct();">Guardar Cambios
+                            <button type="button" class="btn btn-primary btn-sm" onclick="registProduct();">Guardar Cambios
                                 &nbsp;<i class="fas fa-save"></i></button>
                         </div>
                     </div>

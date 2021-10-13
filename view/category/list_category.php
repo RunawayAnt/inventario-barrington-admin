@@ -21,7 +21,6 @@
                     </div>
                 </div>
                 <div class="col-4">
-                     
                     <button class="btn btn-block btn-primary" onclick="notcloseModal('#modal-register-category');"
                      data-target="#modal-register-category">
                         <span class="text-white">
@@ -29,7 +28,6 @@
                         </span>
                         <span class="text">Agregar</span>
                     </button>
-                    
                 </div>
             </div>
 
@@ -61,14 +59,12 @@
 </div>
 <div class="modal fade" id="modal-register-category">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
+        <div class="modal-content"><div class="modal-header bg-primary text-white">
                 <h4 class="modal-title"><i class="fas fa-cubes"></i>&nbsp; Nueva Categoria</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cleanInputs();">
+                <button type="button" class="close" id="btn-close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
-            <form>
+            </div><form class = "register-modal form-register-category">
                 <div class="modal-body bg-light">
                     <div class="row">
                         <div class="col-sm-12">
@@ -85,7 +81,7 @@
 
                                 <input type="text" minlegth="10" maxlength="200" id="nombre_categoria"
                                     class="form-control" onpaste="return false" placeholder="ejemplo: Tela de Seda"
-                                    required onkeypress="return enableLettrs(event)">
+                                     onkeypress="return enableLettrs(event)" required>
                             </div>
                         </div>
                     </div>
@@ -109,12 +105,10 @@
                 </div>
                 <div class="modal-footer justify-content-between bg-light">
                     <button id="show_password" class="btn btn-warning btn-sm" type="button" onclick="show_Textarea(textarea)">
-                        <span class="fa fa-toggle-on icon"></span>&nbsp;<label id="text_btnarea">Descripcion
-                        </label>
-                    </button>
+                        <span class="fa fa-toggle-on icon"></span>&nbsp;Descripcion
+                                    </button>
                     <div class="btn-group drop-up">
-                        <button type="button" class="btn btn-danger btn-sm" onclick="cleanInputs();"
-                            data-dismiss="modal">Cancelar
+                        <button type="button" id="btn-cancel" class="btn btn-danger btn-sm" data-dismiss="modal">Cancelar
                             &nbsp;<i class="fas fa-times"></i></button>
                         <button type="button" class="btn btn-primary btn-sm" onclick="registCategory();">Guardar Cambios
                             &nbsp;<i class="fas fa-save"></i></button>
@@ -128,12 +122,12 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-info text-white">
-                <h4 class="modal-title"><i class="fas fa-sitemap"></i>&nbsp; Editar Categoria</h4>
+                <h4 class="modal-title"><i class="fas fa-pencil-alt"></i>&nbsp; Editar Categoria</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form>
+            <form class="edit-modal">
                 <div class="modal-body bg-light">
                     <div class="row">
                         <div class="col-sm-12">
@@ -150,7 +144,7 @@
 
                                 <input type="text" minlegth="10" maxlength="200" id="edit_nombre_categoria"
                                     class="form-control" onpaste="return false" placeholder="ejemplo: Tela de Seda"
-                                    required onkeypress="return enableLettrs(event)">
+                                     onkeypress="return enableLettrs(event)" required>
                             </div>
                         </div>
                     </div>
@@ -175,8 +169,7 @@
                 <div class="modal-footer justify-content-between bg-light">
                     <button id="show_password" class="btn btn-warning btn-sm" type="button"
                         onclick="show_Textarea(edit_textarea)">
-                        <span class="fa fa-toggle-off icon"></span>&nbsp;<label id="text_btnarea">Descripcion
-                        </label>
+                        <span class="fa fa-toggle-off icon"></span>&nbsp;Descripcion
                     </button>
                     <div class="btn-group drop-up">
                         <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancelar

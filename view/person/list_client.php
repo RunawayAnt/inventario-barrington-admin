@@ -65,14 +65,12 @@
 </div>
 <div class="modal fade" id="modal-register-client">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
+        <div class="modal-content"><div class="modal-header bg-primary text-white">
                 <h4 class="modal-title"><i class="fas fa-users"></i>&nbsp; Nuevo Cliente</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cleanInputs();">
+                <button type="button" class="close" id="btn-close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
-            <form>
+            </div><form class="register-modal">
                 <div class="modal-body bg-light">
                     <div class="row">
                         <div class="col-sm-6">
@@ -180,8 +178,7 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between bg-light">
-                    <button type="button" class="btn btn-danger btn-sm" onclick="cleanInputs();"
-                        data-dismiss="modal">Cancelar
+                    <button type="button" class="btn btn-danger btn-sm" id="btn-cancel" data-dismiss="modal">Cancelar
                         &nbsp;<i class="fas fa-times"></i></button>
                     <button type="button" class="btn btn-primary btn-sm" onclick="registClient();">Guardar Cambios
                         &nbsp;<i class="fas fa-save"></i></button>
@@ -196,12 +193,12 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-info text-white">
-                <h4 class="modal-title"><i class="fas fa-users"></i>&nbsp; Editar Cliente</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cleanInputs();">
+                <h4 class="modal-title"><i class="fas fa-pencil-alt"></i>&nbsp; Editar Cliente</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form>
+            <form class="edit-modal">
                 <div class="modal-body bg-light">
                     <div class="row">
                         <div class="col-sm-6">
@@ -309,7 +306,7 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between bg-light">
-                    <button type="button" class="btn btn-danger btn-sm" onclick="cleanInputs();"
+                    <button type="button" class="btn btn-danger btn-sm"
                         data-dismiss="modal">Cancelar
                         &nbsp;<i class="fas fa-times"></i></button>
                     <button type="button" class="btn btn-primary btn-sm" onclick="editClient();">Guardar Cambios

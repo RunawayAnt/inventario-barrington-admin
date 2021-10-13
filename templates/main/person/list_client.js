@@ -5,16 +5,7 @@ $(function () {
 $(document).ready(function () {
     listClient();
 });
-//Filtro Global del input de la tabla al input creado
-function filterGlobal() {
-    $('#table_client').DataTable().search(
-        $('#global_filter').val(),
-    ).draw();
-}
-//Evitamos cerrar los modal
-function notcloseModal(nomModal) {
-    $(nomModal).modal({ backdrop: 'static', keyboard: false });
-}
+
 //Validar input
 function checkPRegister(value, id, alert) {
 
@@ -116,3 +107,20 @@ function cleanInputs() {
     document.getElementById('alert_cli_email').innerHTML = '';
     document.getElementById('cli_email').className = "form-control";
 }
+
+/*
+!   INHABILITADO
+!   *para evitar codigo redundante*
+*/
+
+// //Filtro Global del input de la tabla al input creado
+// function filterGlobal() {
+//     $('#table_client').DataTable().search(
+//         $('#global_filter').val(),
+//     ).draw();
+// }
+
+// //Evitamos cerrar los modal
+// function notcloseModal(nomModal) {
+//     $(nomModal).modal({ backdrop: 'static', keyboard: false });
+// }

@@ -1,3 +1,6 @@
+ 
+
+
 function listProvider() {
     table = $("#table_provider").DataTable({
         "ordering": true,
@@ -74,6 +77,9 @@ function registProvider() {
     let correo = subcorreo + domain;
     let telefono = subtelefono.replace(element, '');
     var ruc = subruc.replace(element, '');
+    //----------------------
+    let formRegs = document.querySelector('.register-modal');
+
 
     checkPRegister(ruc, "prov_ruc", 'alert_prov_ruc');
     checkPRegister(nombre, "prov_nombre", 'alert_prov_nombre');
@@ -104,7 +110,7 @@ function registProvider() {
                         "success")
                         .then((result) => {
                             table.ajax.reload();
-                            cleanInputs();
+                            inputClear(formRegs);
                         })
                 } else {
                     return Swal.fire({
@@ -216,6 +222,9 @@ function editProvider() {
     let edttelefono = edtsubtelefono.replace(element, '');
     let edtruc = edtsubruc.replace(element, '');
     let edtcorreo = edtsubcorreo + edt_domain;
+    //-------------------------------------------
+    let formEdit = document.querySelector('.edit-modal');
+
 
     checkPRegister(edtruc, "prov_edtruc", 'alert_prov_ruc');
     checkPRegister(edtempresa, "prov_edtnombre", 'alert_prov_nombre');
@@ -243,8 +252,7 @@ function editProvider() {
                     "success")
                     .then((result) => {
                         table.ajax.reload();
-                        cleanInputs(2);
-                        cleanInputs(1);
+                        inputClear(formEdit);
                     })
             } else {
                 Swal.fire({

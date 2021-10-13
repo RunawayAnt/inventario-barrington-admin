@@ -2,17 +2,9 @@
 $(document).ready(function () {
     listCategory();
 });
-//Filtro Global del input de la tabla al input creado
-function filterGlobal() {
-    $('#table_category').DataTable().search(
-        $('#global_filter').val(),
-    ).draw();
-}
-//Evitamos cerrar los modal
-function notcloseModal(nomModal) {
-    $(nomModal).modal({ backdrop: 'static', keyboard: false });
-}
+
 //Desactivar o Activar Text-area
+
 function show_Textarea(change) {
     //var change = document.getElementById("password");
     if (change.disabled == true) {
@@ -29,7 +21,9 @@ function show_Textarea(change) {
         document.getElementById('edit_textarea').className = "form-control";
     }
 }
+
 //Limpiar Inputs despues de registrar categorias
+
 function cleanInputs() {
     //console.log(1);
     document.getElementById('alert_nombre_categoria').innerHTML = '';
@@ -37,7 +31,9 @@ function cleanInputs() {
     document.getElementById('textarea').className = "form-control";
     document.getElementById('nombre_categoria').className = "form-control";
 }
+
 //Permitir caracteres para Text Area y Input
+
 function enableLettrsTextArea(e) {
     //specialPars = [8, 37, 39, 46],
     var key = e.keyCode || e.which,
@@ -57,6 +53,7 @@ function enableLettrsTextArea(e) {
         return false;
     }
 }
+
 function enableLettrs(e) {
     //specialPars = [8, 37, 39, 46],
     var key = e.keyCode || e.which,
@@ -76,13 +73,15 @@ function enableLettrs(e) {
         return false;
     }
 }
+
 //Validar Inputs
+
 function validateInputs(va, id, alert) {
     if (textarea.disabled == true && id == 'textarea' || edit_textarea.disabled == true && id == 'edit_textarea') {
         document.getElementById('alert_textarea').innerHTML = '';
         document.getElementById('textarea').className = "form-control";
         document.getElementById('edit_textarea').className = "form-control";
-        return  false;
+        return false;
     }
     if (va.trim() == '') {
         //Input descripcion
@@ -109,5 +108,23 @@ function validateInputs(va, id, alert) {
         }
 
     }
-
 }
+
+/*
+!   INHABILITADO
+!   *para evitar codigo redundante*
+*/
+
+// //Filtro Global del input de la tabla al input creado
+// function filterGlobal() {
+//     $('#table_category').DataTable().search(
+//         $('#global_filter').val(),
+//     ).draw();
+// }
+
+// //Evitamos cerrar los modal
+// function notcloseModal(nomModal) {
+//     $(nomModal).modal({ backdrop: 'static', keyboard: false });
+// }
+
+

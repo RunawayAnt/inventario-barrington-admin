@@ -1,3 +1,5 @@
+
+
 //Operaciones crud js
 var table;
 function listCategory() {
@@ -64,6 +66,9 @@ function listCategory() {
 function registCategory() {
     let descrip = $('#textarea').val();
     let categ = $('#nombre_categoria').val();
+
+    let formRegs = document.querySelector('.register-modal');
+
     validateInputs(categ, 'nombre_categoria', 'alert_nombre_categoria');
     validateInputs(descrip, 'textarea', 'alert_textarea');
     if (textarea.disabled == true) {
@@ -87,6 +92,7 @@ function registCategory() {
                         "success")
                         .then((result) => {
                             table.ajax.reload();
+                            inputClear(formRegs);
                             //location.reload();
                         })
                 } else {
@@ -191,6 +197,9 @@ $('#table_category').on('click', '.editar', function () {
 
 function editCategory() {
     let id_category = id_editCategory;
+
+    let formEdit = document.querySelector('.edit-modal');
+
     let edt_categoria = $('#edit_nombre_categoria').val();
     let edt_descripcion = $('#edit_textarea ').val();
     validateInputs(edt_categoria, 'edit_nombre_categoria', 'alert_nombre_categoria');
@@ -214,6 +223,7 @@ function editCategory() {
                     "success")
                     .then((result) => {
                         table.ajax.reload();
+                        inputClear(formEdit);
                     })
             } else {
                 Swal.fire({

@@ -1,3 +1,6 @@
+
+
+
 //Operaciones crud js
 var table;
 function listClient() {
@@ -53,12 +56,17 @@ function registClient() {
     let dni = $("#cli_dni").val();
     let email = $("#cli_email").val();
     let telefonoA = $("#cli_telefono").val();
+    //------------
+    let formRegs = document.querySelector('.register-modal');
 
     let domain = $("#domain").val();
     let element = /_/g;
     let correo = email + domain;
     let rephone = telefonoA.replace(element, '');
     let redni = dni.replace(element, '');
+
+
+
     checkPRegister(nombres, "cli_nombres", 'alert_cli_nombres');
     checkPRegister(apellid, "cli_apellidos", 'alert_cli_apellidos');
     checkPRegister(redni, "cli_dni", 'alert_cli_dni');
@@ -87,7 +95,7 @@ function registClient() {
                         "success")
                         .then((result) => {
                             table.ajax.reload();
-                            cleanInputs();
+                            inputClear(formRegs);
                         })
                 } else {
                     return Swal.fire({
@@ -133,6 +141,8 @@ $('#table_client').on('click', '.editar', function () {
 
 })
 function editClient() {
+    let formEdit = document.querySelector('.edit-modal');
+
     let id = id_editProv;
     let nombres = $("#cli_edtnombres").val();
     let apellid = $("#cli_edtapellidos").val();
@@ -173,6 +183,8 @@ function editClient() {
                     "success")
                     .then((result) => {
                         table.ajax.reload();
+                        // inputClear(formEdit);
+                        inputClear(formEdit);
                     })
             } else {
                 Swal.fire({

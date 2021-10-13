@@ -1,16 +1,13 @@
 $(function () {
     $('[data-mask]').inputmask()
 })
+
 //Carga Lista
 $(document).ready(function () {
     listProvider();
 });
-//Filtro Global del input de la tabla al input creado
-function filterGlobal() {
-    $('#table_provider').DataTable().search(
-        $('#global_filter').val(),
-    ).draw();
-}
+
+
 //Permitir caracteres para Text Area y Input
 function enableLettrsNum(e) {
     //specialPars = [8, 37, 39, 46],
@@ -33,6 +30,7 @@ function enableLettrsNum(e) {
         return false;
     }
 }
+
 function enableLettrs(e) {
     //specialPars = [8, 37, 39, 46],
     var key = e.keyCode || e.which,
@@ -52,6 +50,7 @@ function enableLettrs(e) {
         return false;
     }
 }
+
 function enableLN(e) {
     //specialPars = [8, 37, 39, 46],
     var key = e.keyCode || e.which,
@@ -73,10 +72,7 @@ function enableLN(e) {
         return false;
     }
 }
-//Evitamos cerrar los modal
-function notcloseModal(nomModal) {
-    $(nomModal).modal({ backdrop: 'static', keyboard: false });
-}
+
 function cleanInputs() {
     document.getElementById('alert_prov_ruc').innerHTML = '';
     document.getElementById('prov_ruc').className = "form-control";
@@ -100,6 +96,7 @@ function cleanInputs() {
     $("#prov_telefono").val("");
     //console.log('sssss');
 }
+
 //Validar input
 function checkPRegister(value, id, alert) {
     if (value.trim() == "") {
@@ -159,3 +156,20 @@ function checkPRegister(value, id, alert) {
         }
     }
 }
+
+/*
+!   INHABILITADO
+!   *para evitar codigo redundante*
+*/
+
+// //Filtro Global del input de la tabla al input creado
+// function filterGlobal() {
+//     $('#table_provider').DataTable().search(
+//         $('#global_filter').val(),
+//     ).draw();
+// }
+
+// //Evitamos cerrar los modal
+// function notcloseModal(nomModal) {
+//     $(nomModal).modal({ backdrop: 'static', keyboard: false });
+// }

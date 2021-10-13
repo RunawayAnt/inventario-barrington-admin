@@ -1,20 +1,28 @@
+//?___Cargamos funciones y eventos
+//?___:mejorado:
+
+$(document).ready(function () {
+    listClient();
+
+    $('#btn-cancel').click(function () {
+        let form = this.parentNode.parentNode.parentNode;
+        inputClear(form);
+    });
+
+    $('#btn-close').click(function () {
+        let form = this.parentNode.nextSibling;
+        inputClear(form);
+    });
+});
+
+//!───────────────────
+//! FALTAN MEJORAR
+//!!──────────────────
+
 $(function () {
     $('[data-mask]').inputmask()
 })
-//Carga Lista
-$(document).ready(function () {
-    listClient();
-});
-//Filtro Global del input de la tabla al input creado
-function filterGlobal() {
-    $('#table_client').DataTable().search(
-        $('#global_filter').val(),
-    ).draw();
-}
-//Evitamos cerrar los modal
-function notcloseModal(nomModal) {
-    $(nomModal).modal({ backdrop: 'static', keyboard: false });
-}
+
 //Validar input
 function checkPRegister(value, id, alert) {
 
@@ -26,12 +34,12 @@ function checkPRegister(value, id, alert) {
         if (value.length > 7) {
             document.getElementById(alert).style.display = 'block';
             document.getElementById(alert).className = "text-success";
-            document.getElementById(alert).innerHTML = 'Caracteres correctos';
+            // document.getElementById(alert).innerHTML = 'Caracteres correctos';
             document.getElementById(id).className = "form-control is-valid";
         } else {
             document.getElementById(alert).style.display = 'block';
             document.getElementById(alert).className = "text-warning";
-            document.getElementById(alert).innerHTML = 'Minimo 8 caracteres';
+            // document.getElementById(alert).innerHTML = 'Minimo 8 caracteres';
             document.getElementById(id).className = "form-control is-warning";
         }
     }
@@ -45,12 +53,12 @@ function checkPRegister(value, id, alert) {
             if (value.length > 16) {
                 document.getElementById(alert).style.display = 'block';
                 document.getElementById(alert).className = "text-success";
-                document.getElementById(alert).innerHTML = 'Caracteres correctos';
+                // document.getElementById(alert).innerHTML = 'Caracteres correctos';
                 document.getElementById(id).className = "form-control is-valid";
             } else {
                 document.getElementById(alert).style.display = 'block';
                 document.getElementById(alert).className = "text-warning";
-                document.getElementById(alert).innerHTML = 'Faltan Numeros';
+                // document.getElementById(alert).innerHTML = 'Faltan Numeros';
                 document.getElementById(id).className = "form-control is-warning";
             }
         }
@@ -116,3 +124,20 @@ function cleanInputs() {
     document.getElementById('alert_cli_email').innerHTML = '';
     document.getElementById('cli_email').className = "form-control";
 }
+
+/*
+!   INHABILITADO
+!   *para evitar codigo redundante*
+*/
+
+// //Filtro Global del input de la tabla al input creado
+// function filterGlobal() {
+//     $('#table_client').DataTable().search(
+//         $('#global_filter').val(),
+//     ).draw();
+// }
+
+// //Evitamos cerrar los modal
+// function notcloseModal(nomModal) {
+//     $(nomModal).modal({ backdrop: 'static', keyboard: false });
+// }
