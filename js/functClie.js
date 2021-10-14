@@ -44,7 +44,7 @@ function listClient() {
     document.getElementById("table_client_filter").style.display = "none";
 
     $('input.global_filter').on('keyup click', function () {
-        filterGlobal();
+        filterGlobal('#table_client');
     });
     $('input.column_filter').on('keyup click', function () {
         filterColumn($(this).parents('tr').attr('data-column'));

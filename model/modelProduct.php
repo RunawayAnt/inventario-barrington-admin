@@ -81,17 +81,17 @@ class ModelProduct
     //         $this->conn->Disconnect();
     //     }
     // }
-    
-    // public function editProduct($id, $nom, $desc, $prentrada, $prsalida, $mininv, $idcat, $idprov, $unid)
-    // {
-    //     $sql = "call SP_EDITAR_PRODUCTOS('$id','$nom','$desc','$prentrada','$prsalida','$mininv','$idcat','$idprov','$unid')";
-    //     if ($q = $this->conn->conn->query($sql)) {
-    //         //$id_return = mysqli_insert_ind($this->conn->conn);
-    //         return 1;
-    //     } else {
-    //         return 0;
-    //     }
-    // }
+
+    public function editProduct($id, $nom, $desc, $prentrada, $prsalida, $mininv, $idcat, $idprov, $unid)
+    {
+        $sql = "call SP_EDITAR_PRODUCTOS('$id','$nom','$desc','$prentrada','$prsalida','$mininv','$idcat','$idprov','$unid')";
+        if ($q = $this->conn->conn->query($sql)) {
+            //$id_return = mysqli_insert_ind($this->conn->conn);
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 
     // public function deleteProduct($id)
     // {
@@ -129,11 +129,11 @@ class ModelProduct
 
     /*--------------------------------------------------
      public function codigo_aleatorio($letraP,$letraL,$longitud,$num){
-for ($i=1; $i <= $longitud ; $i++) {
-$numero = rand(0,9);
-$letraP.=$numero;
-}
-return $letraP.$num.$letraL;
-}
---------------------------------------------------*/
+        for ($i=1; $i <= $longitud ; $i++) {
+        $numero = rand(0,9);
+        $letraP.=$numero;
+        }
+        return $letraP.$num.$letraL;
+    }
+    --------------------------------------------------*/
 }

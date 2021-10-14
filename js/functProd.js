@@ -89,7 +89,7 @@ function listProducts() {
     document.getElementById("table_product_filter").style.display = "none";
 
     $('input.global_filter').on('keyup click', function () {
-        filterGlobal();
+        filterGlobal('#table_product');
     });
     $('input.column_filter').on('keyup click', function () {
         filterColumn($(this).parents('tr').attr('data-column'));
@@ -179,7 +179,7 @@ longitud = 8;
 function registProduct() {
     let codigobarras = rand_code('D', 'A', caracteres, longitud)
     let nombrepr = $("#prod_nom").val();
-    let caractpr = $("#prod_descrip").val();
+    let caractpr = $("#description_register").val();
     let categoriapr = $("#select_category").val();
     let proveedorpr = $("#select_provider").val();
     let precioentradapr = $("#prod_precentrada").val();
@@ -189,7 +189,11 @@ function registProduct() {
     let cantidad = $("#prod_cant").val();
     let idusarios = $("#usuarioid").val();
 
-    if (!nombrepr.trim() == '' && nombrepr.length > 2 && !codigobarras.trim() == '' && codigobarras.length > 2) {
+    if (description_register.disabled == true) {
+        caractpr = 'Not description'
+    }
+
+    if (inventariomin < cantidad && cantidad > 4 && !nombrepr.trim() == '' && nombrepr.length > 2 && !codigobarras.trim() == '' && codigobarras.length > 2) {
 
         $.ajax({
             url: '../controller/product/ctrl_register_product_op.php',
@@ -267,7 +271,6 @@ function registerOperation(cantidad, id) {
     })
 }
 
-
 /*
  * **CAMBIAR ESTADO DEL PRODUCTO SELECCIONADO
 */
@@ -334,78 +337,92 @@ function checkEstatus(in_id, in_status) {
     })
 }
 
+/*
+ * **OPERACIONES PARA EDITAR PRODUCTO
+ */
 
+/* ---------------------------------------------------------------
+?Evento 'click' para mostrar datos de producto por id
+------------------------------------------------------------------*/
 
-// var id_editProduct;
-// $('#table_product').on('click', '.editar', function () {
-//     var data = table.row($(this).parents('tr')).data();
-//     if (table.row(this).child.isShown()) {
-//         var data = table.row(this).data();
-//     }
-//     id_editProduct = data.id_producto;
-//     console.log(data.id_producto)
-//     $("#prod_codigobarra_edt").val(data.codigobarras);
-//     $("#prod_nom_edt").val(data.nombre);
-//     $("#prod_descrip_edt").val(data.descripcion);
-//     $("#prod_precentrada_edt").val(data.precioentrada);
-//     $("#prod_precsalida_edt").val(data.preciosalida);
-//     $("#prod_mini_edt").val(data.mininventario);
-//     $("#select_category_edt").val(data.id_categoria);
-//     $("#select_provider_edt").val(data.id_proveedor);
-// })
+var id_editProduct;
 
-// function editProduct() {
-//     let id_product = id_editProduct;
-//     let edt_nom = $('#prod_nom_edt').val();
-//     let edt_descrip = $('#prod_descrip_edt ').val();
-//     let edt_precentrada = $('#prod_precentrada_edt').val();
-//     let edt_precsalida = $('#prod_precsalida_edt').val();
-//     let edt_mini = $('#prod_mini_edt').val();
-//     let edt_category = $('#select_category_edt ').val();
-//     let edt_provider = $('#select_provider_edt').val();
-//     let edt_unid = $("#select_unid_edt").val();
+$('#table_product').on('click', '.editar', function () {
+    var data = table.row($(this).parents('tr')).data();
+    if (table.row(this).child.isShown()) {
+        var data = table.row(this).data();
+    }
+    id_editProduct = data.id_producto;
+    // console.log(data.id_producto)
+    $("#prod_codigobarra_edt").val(data.codigobarras);
+    $("#prod_nom_edt").val(data.nombre);
+    $("#description_edit").val(data.descripcion);
+    $("#prod_precentrada_edt").val(data.precioentrada);
+    $("#prod_precsalida_edt").val(data.preciosalida);
+    $("#prod_mini_edt").val(data.mininventario);
+    $("#select_category_edt").val(data.id_categoria);
+    $("#select_provider_edt").val(data.id_proveedor);
+    $("#select_unid_edt").val(data.unidad);
 
-//     if (!edt_nom.trim() == '' && edt_nom.length > 5 && !edt_descrip.trim() == '' && edt_descrip.length > 5) {
-//         $.ajax({
-//             url: '../controller/product/ctrl_edit_product.php',
-//             type: 'POST',
-//             data: {
-//                 edit_id: id_product,
-//                 edit_nom: edt_nom,
-//                 edit_descrip: edt_descrip,
-//                 edit_prentrada: edt_precentrada,
-//                 edit_prsalida: edt_precsalida,
-//                 edit_mininv: edt_mini,
-//                 edit_categ: edt_category,
-//                 edit_prov: edt_provider,
-//                 edit_unid: edt_unid
-//             }
-//         }).done(function (reply) {
-//             if (reply > 0) {
-//                 $("#modal-edit-product").modal('hide');
-//                 Swal.fire("Elemento Editado", "Se ha editado con exito el producto",
-//                     "success")
-//                     .then((result) => {
-//                         table.ajax.reload();
-//                     })
-//             } else {
-//                 Swal.fire({
-//                     icon: 'error',
-//                     title: 'Oops...',
-//                     text: 'Se ha detectado un error!',
-//                     footer: '<a href>Comuniquese con el equipo de soporte</a>'
-//                 })
-//             }
-//         })
-//     }
-//     /*validateInputs(edt_categoria, 'edit_nombre_categoria', 'alert_nombre_categoria');
-//     validateInputs(edt_descripcion, 'edit_textarea', 'alert_textarea');
-//     if (edit_textarea.disabled == true) {
-//         edt_descripcion = 'Not description';
-//     }
-//     */
+})
 
-// }
+/* ---------------------------------------------------------------
+?Funcion para editar producto
+------------------------------------------------------------------*/
+
+function editProduct() {
+    let id_product = id_editProduct;
+    let edt_nom = $('#prod_nom_edt').val();
+    let edt_descrip = $('#description_edit').val();
+    let edt_precentrada = $('#prod_precentrada_edt').val();
+    let edt_precsalida = $('#prod_precsalida_edt').val();
+    let edt_mini = $('#prod_mini_edt').val();
+    let edt_category = $('#select_category_edt ').val();
+    let edt_provider = $('#select_provider_edt').val();
+    let edt_unid = $("#select_unid_edt").val();
+
+    if (!edt_nom.trim() == '' && edt_nom.length > 5 && !edt_descrip.trim() == '' && edt_descrip.length > 5) {
+        $.ajax({
+            url: '../controller/product/ctrl_edit_product.php',
+            type: 'POST',
+            data: {
+                edit_id: id_product,
+                edit_nom: edt_nom,
+                edit_descrip: edt_descrip,
+                edit_prentrada: edt_precentrada,
+                edit_prsalida: edt_precsalida,
+                edit_mininv: edt_mini,
+                edit_categ: edt_category,
+                edit_prov: edt_provider,
+                edit_unid: edt_unid
+            }
+        }).done(function (reply) {
+            if (reply > 0) {
+                $("#modal-edit-product").modal('hide');
+                Swal.fire("Elemento Editado", "...",
+                    "success")
+                    .then((result) => {
+                        table.ajax.reload();
+                    })
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Se ha detectado un error!',
+                    footer: '<a href>Comuniquese con el equipo de soporte</a>'
+                })
+            }
+        })
+    }
+
+    /*validateInputs(edt_categoria, 'edit_nombre_categoria', 'alert_nombre_categoria');
+    validateInputs(edt_descripcion, 'edit_textarea', 'alert_textarea');
+    if (edit_textarea.disabled == true) {
+        edt_descripcion = 'Not description';
+    }*/
+
+}
+
 // //Borrar Proveedores
 // $('#table_product').on('click', '.borrar', function () {
 //     var data = table.row($(this).parents('tr')).data();
@@ -431,6 +448,7 @@ function checkEstatus(in_id, in_status) {
 //     })
 
 // })
+
 // function deleteProvider(in_idproducto) {
 //     $.ajax({
 //         url: '../controller/product/ctrl_delete_product.php',

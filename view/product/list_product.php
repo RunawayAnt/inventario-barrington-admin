@@ -121,7 +121,7 @@ session_start();
                                         </div>
 
                                         <textarea class="form-control" placeholder="Enter ..." minlegth="10" maxlength="100"
-                                            id="prod_descrip" placeholder="ejemplo: Pedro Luis"
+                                            id="description_register" placeholder="ejemplo: Pedro Luis"
                                             style="height: 50px;" disabled></textarea>
                                     </div>
                                 </div>
@@ -213,7 +213,6 @@ session_start();
                                                 <label class="block" id="alert_cli_nombres" style="display:none"></label>
                                             </div>
                                         </div>
-                                        
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">S/.</span>
@@ -329,7 +328,7 @@ session_start();
     <!-- ES: Termina modulo o ventana para registrar producto-->
 
     <!-- ES: Comienza modulo o ventana para editar producto-->
-    <!-- <div class="modal fade" id="modal-edit-product">
+    <div class="modal fade" id="modal-edit-product">
         <div class="modal-dialog modal-xl">
             <div class="modal-content bg-info">
                 <div class="modal-header">
@@ -342,12 +341,7 @@ session_start();
                     <div class="modal-body bg-light">
                         <div class="callout callout-info">
                             <div class="row">
-                                <div class="col-sm-3">
-
-                                    <label title="Importante">Codigo de Barras</label>
-
-                                </div>
-                                <div class="col-sm-9">
+                                <div class="col-lg-3">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
@@ -392,7 +386,7 @@ session_start();
                                         </div>
 
                                         <textarea class="form-control" placeholder="Enter ..." minlegth="10" maxlength="100"
-                                            id="prod_descrip_edt" placeholder="ejemplo: Pedro Luis"
+                                            id="description_edit" placeholder="ejemplo: Pedro Luis"
                                             style="height: 50px;"></textarea>
                                     </div>
                                 </div>
@@ -569,7 +563,7 @@ session_start();
 
         </div>
 
-    </div> -->
+    </div>
     <!-- ES: Termina modulo o ventana para editar producto-->
 
 <!-----Script List product--->

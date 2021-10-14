@@ -38,7 +38,6 @@ function show_Textarea(change) {
     }
 }
 
-
 //Permitir caracteres para Text Area y Input
 
 function enableLettrsTextArea(e) {

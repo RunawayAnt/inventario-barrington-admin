@@ -2,6 +2,7 @@
 
 //Operaciones crud js
 var table;
+
 function listCategory() {
     table = $("#table_category").DataTable({
         "ordering": true,
@@ -57,12 +58,13 @@ function listCategory() {
     document.getElementById("table_category_filter").style.display = "none";
 
     $('input.global_filter').on('keyup click', function () {
-        filterGlobal();
+        filterGlobal('#table_category');
     });
     $('input.column_filter').on('keyup click', function () {
         filterColumn($(this).parents('tr').attr('data-column'));
     });
 }
+
 function registCategory() {
     let descrip = $('#textarea').val();
     let categ = $('#nombre_categoria').val();
@@ -153,6 +155,7 @@ $('#table_category').on('click', '.estado', function () {
 
 
 })
+
 function checkEstatus(in_id, in_status) {
     //console.log(in_id + '-' + in_status);
     $.ajax({
@@ -201,12 +204,14 @@ function editCategory() {
     let formEdit = document.querySelector('.edit-modal');
 
     let edt_categoria = $('#edit_nombre_categoria').val();
-    let edt_descripcion = $('#edit_textarea ').val();
+    let edt_descripcion = $('#edit_textarea').val();
     validateInputs(edt_categoria, 'edit_nombre_categoria', 'alert_nombre_categoria');
     validateInputs(edt_descripcion, 'edit_textarea', 'alert_textarea');
+
     if (edit_textarea.disabled == true) {
         edt_descripcion = 'Not description';
     }
+
     if (!edt_descripcion.trim() == '' && edt_descripcion.length > 5 && !edt_categoria.trim() == '' && edt_categoria.length > 5) {
         $.ajax({
             url: '../controller/category/ctrl_edit_category.php',
@@ -237,6 +242,7 @@ function editCategory() {
     }
 
 }
+
 //Obtenemos los valores al darle click a una columna para Eliminar
 $('#table_category').on('click', '.borrar', function () {
     var data = table.row($(this).parents('tr')).data();
@@ -289,6 +295,7 @@ function deleteCategory(idCateg) {
         }
     })
 }
+
 //Obtenemos los valores al darle click a una columna para Ver informacion
 $('#table_category').on('click', '.vista', function () {
     var data = table.row($(this).parents('tr')).data();

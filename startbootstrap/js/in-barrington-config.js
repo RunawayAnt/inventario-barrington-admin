@@ -11,8 +11,8 @@ function notcloseModal(nomModal) {
 
 //?___Funcion "Filtro Global" del input de la tabla al input creado
 
-function filterGlobal() {
-    $('#table_category').DataTable().search(
+function filterGlobal(element) {
+    $(element).DataTable().search(
         $('#global_filter').val(),
     ).draw();
 }

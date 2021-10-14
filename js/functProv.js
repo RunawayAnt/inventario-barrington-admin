@@ -58,7 +58,7 @@ function listProvider() {
     document.getElementById("table_provider_filter").style.display = "none";
 
     $('input.global_filter').on('keyup click', function () {
-        filterGlobal();
+        filterGlobal('#table_provider');
     });
     $('input.column_filter').on('keyup click', function () {
         filterColumn($(this).parents('tr').attr('data-column'));
