@@ -208,7 +208,7 @@ if (!isset($_SESSION['se_user'])) {
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a class="nav-link"
-                                        onclick="Load_contend('content_main','product/list_product.php')">
+                                        onclick="">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Inventario</p>
                                     </a>
@@ -254,6 +254,9 @@ if (!isset($_SESSION['se_user'])) {
     </div>
     <!-- jQuery *-->
     <script src="../tmp/adminLTE/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="../tmp/adminLTE/plugins/sweetAlert/sweetalert2.js"></script>
 
     <!-- Bootstrap *-->
     <script src="../tmp/adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

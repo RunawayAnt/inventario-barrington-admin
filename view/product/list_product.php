@@ -570,7 +570,7 @@ session_start();
 <script src="../templates/main/product/list_product.js"></script>
 
 <!----Sweet Alert---->
-<script src="../startbootstrap/sweetAlert/sweetalert2.js"></script>
+<!-- <script src="../startbootstrap/sweetAlert/sweetalert2.js"></script> -->
 
 <!----JsBarcode----->
 <script src="../startbootstrap/plugins/Barcode/JsBarcode.all.min.js"></script>

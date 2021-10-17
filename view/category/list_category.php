@@ -213,4 +213,4 @@
 <script src="../startbootstrap/js/category/list_category.js"></script>
 
 <!----Sweet Alert --->
-<script src="../startbootstrap/sweetAlert/sweetalert2.js"></script>
+<!-- <script src="../startbootstrap/sweetAlert/sweetalert2.js"></script> -->

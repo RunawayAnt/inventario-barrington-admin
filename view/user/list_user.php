@@ -496,4 +496,4 @@
 </div>
 <!-- /.modal -->
 <script src="../templates/main/user/js/list_user.js"></script>
-<script src="../templates/templates_login/sweetAlert/sweetalert2.js"></script>
+<!-- <script src="../templates/templates_login/sweetAlert/sweetalert2.js"></script> -->

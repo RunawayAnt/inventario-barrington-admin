@@ -323,4 +323,4 @@
 <script src="../startbootstrap/js/person/list_client.js"></script>
 
 <!----Sweet Alert --->
-<script src="../startbootstrap/sweetAlert/sweetalert2.js"></script>
+<!-- <script src="../startbootstrap/sweetAlert/sweetalert2.js"></script> -->
