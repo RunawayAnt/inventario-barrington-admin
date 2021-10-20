@@ -1,4 +1,4 @@
-<script type="text/javascript" src="../js/functCate.js?rev=<?php echo time(); ?>"></script>
+<script type="text/javascript" src="../config/functCate.js?rev=<?php echo time(); ?>"></script>
 
 <section class="content-header">
     <h1 class="h3 mb-4 text-gray-800">Almacen</h1>
@@ -210,7 +210,4 @@
 </div>
 
 <!-----Script Category----->
-<script src="../startbootstrap/js/category/list_category.js"></script>
-
-<!----Sweet Alert --->
-<!-- <script src="../startbootstrap/sweetAlert/sweetalert2.js"></script> -->
+<script src="../tmp/adminLTE/dist/js/pages/category/list_category.js"></script>

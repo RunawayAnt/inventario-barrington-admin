@@ -1,7 +1,11 @@
+/*
+ * **LISTAR CATEGORIAS EN TABLA
+ */
 
+/* ---------------------------------------------------------------
+?Funcion para listar los clientes 
+------------------------------------------------------------------*/
 
-
-//Operaciones crud js
 var table;
 function listClient() {
     table = $("#table_client").DataTable({
@@ -40,7 +44,6 @@ function listClient() {
         "language": idioma_espanol,
         select: true
     });
-
     document.getElementById("table_client_filter").style.display = "none";
 
     $('input.global_filter').on('keyup click', function () {
@@ -50,6 +53,7 @@ function listClient() {
         filterColumn($(this).parents('tr').attr('data-column'));
     });
 }
+
 function registClient() {
     let nombres = $("#cli_nombres").val();
     let apellid = $("#cli_apellidos").val();
