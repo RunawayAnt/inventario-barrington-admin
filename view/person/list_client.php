@@ -1,6 +1,6 @@
-<script type="text/javascript" src="../js/functClie.js?rev=<?php echo time(); ?>"></script>
+<script type="text/javascript" src="../config/functClie.js?rev=<?php echo time(); ?>"></script>
 <section class="content-header">
-    <h1 class="h3 mb-4 text-gray-800">Almacen</h1>
+    <!-- <h1 class="h3 mb-4 text-gray-800">Almacen</h1> -->
 </section>
 <!-- Main content -->
 <section class="content">
@@ -41,7 +41,7 @@
                         <th>Apellidos</th>
                         <th>Telefono</th>
                         <th>Correo</th>
-                        <th>Registrado</th>
+                        <!-- <th>Registrado</th> -->
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -53,7 +53,7 @@
                         <td>Apellidos</td>
                         <td>Telefono</td>
                         <td>Correo</td>
-                        <td>Registrado</td>
+                        <!-- <td>Registrado</td> -->
                         <td>Acciones</td>
                     </tr>
                 </tbody>
@@ -155,22 +155,15 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label title="Importante">Correo Electronico<i class="text-danger"
-                                                title="Importante">*</i></label>
+                                        <label title="Importante">Correo Electronico</label>
                                     </div>
                                     <div class="col-sm-6">
                                         <label class="block" id="alert_cli_email" style="display:none"></label>
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="cli_email" onpaste="return false"
-                                        placeholder="ejemplo: pedro_PD" required onkeypress="return enableLettrsNum(event)">
-
-                                    <select class="custom-select" required id="domain">
-                                        <option value="@hotmail.com">@hotmail.com</option>
-                                        <option value="@Outlook.com">@Outlook.com</option>
-                                        <option value="@gmail.com" selected>@gmail.com</option>
-                                    </select>
+                                    <input type="email" class="form-control" id="cli_email" onpaste="return false"
+                                        placeholder="ejemplo: cliente@gmail.com"  onkeypress="return enableCodeemail(event)">
                                 </div>
                             </div>
                         </div>
@@ -291,14 +284,8 @@
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="cli_edtemail" onpaste="return false"
-                                        placeholder="ejemplo: pedro_PD" required onkeypress="return enableLettrsNum(event)">
-
-                                    <select class="custom-select" required id="edtdomain">
-                                        <option value="@hotmail.com">@hotmail.com</option>
-                                        <option value="@Outlook.com">@Outlook.com</option>
-                                        <option value="@gmail.com" selected>@gmail.com</option>
-                                    </select>
+                                    <input type="email" class="form-control" id="cli_edtemail" onpaste="return false"
+                                        placeholder="ejemplo: cliente@gmail.com" required onkeypress="return enableLettrsNum(event)">
                                 </div>
                             </div>
                         </div>
@@ -320,7 +307,4 @@
 </div>
 
 <!----Script Client-->
-<script src="../startbootstrap/js/person/list_client.js"></script>
-
-<!----Sweet Alert --->
-<!-- <script src="../startbootstrap/sweetAlert/sweetalert2.js"></script> -->
+<script src="../tmp/adminLTE/dist/js/pages/supplier/list_client.js"></script>
