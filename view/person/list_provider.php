@@ -1,4 +1,4 @@
-<script type="text/javascript" src="../js/functProv.js?rev=<?php echo time(); ?>"></script>
+<script type="text/javascript" src="../config/functProv.js?rev=<?php echo time(); ?>"></script>
 
 <section class="content-header">
     <h1 class="h3 mb-4 text-gray-800">Almacen</h1>
@@ -72,9 +72,9 @@
                 </button>
             </div><form class="register-modal">
                 <div class="modal-body bg-light">
-                    <div class="card callout callout-info">
+                    <!-- <div class="card callout callout-info"> -->
                         <div class="card-body">
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-sm-9">
                                     <div class="row">
                                         <div class="col-sm-9">
@@ -97,15 +97,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <br>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="row">
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-9">
                                             <label title="Importante">Razon Social<i class="text-danger"
                                                     title="Importante">*</i></label>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-2">
                                             <label class="block" id="alert_prov_nombre" style="display:none"></label>
                                         </div>
                                     </div>
@@ -150,8 +149,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <label title="Importante">Email<i class="text-danger"
-                                                        title="Importante">*</i></label>
+                                                <label title="Importante">Email</label>
                                             </div>
                                             <div class="col-sm-6">
                                                 <label class="block" id="alert_prov_email" style="display:none"></label>
@@ -162,11 +160,11 @@
                                                 onpaste="return false" placeholder="ejemplo: pedro_PD" required
                                                 onkeypress="return enableLettrsNum(event)">
 
-                                            <select class="custom-select" required id="domain">
+                                            <!-- <select class="custom-select" required id="domain">
                                                 <option value="@hotmail.com">@hotmail.com</option>
                                                 <option value="@Outlook.com">@Outlook.com</option>
                                                 <option value="@gmail.com" selected>@gmail.com</option>
-                                            </select>
+                                            </select> -->
                                         </div>
                                     </div>
 
@@ -191,7 +189,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <!-- </div> -->
                 </div>
                 <div class="modal-footer justify-content-between bg-light">
                     <button type="button" class="btn btn-danger btn-sm" id="btn-cancel"
@@ -219,14 +217,13 @@
 
             <form class="edit-modal">
                 <div class="modal-body bg-light">
-                    <div class="card callout callout-info">
+                    <!-- <div class="card callout callout-info"> -->
                         <div class="card-body">
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-sm-9">
                                     <div class="row">
                                         <div class="col-sm-9">
-                                            <label title="Importante">Numero de RUC<i class="text-danger"
-                                                    title="Importante">*</i></label>
+                                            <label title="Importante">Numero de RUC</label>
                                         </div>
                                         <div class="col-sm-3">
                                             <label class="block" id="alert_prov_ruc" style="display:none"></label>
@@ -244,15 +241,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <br>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="row">
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-9">
                                             <label title="Importante">Razon Social<i class="text-danger"
                                                     title="Importante">*</i></label>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-3">
                                             <label class="block" id="alert_prov_nombre" style="display:none"></label>
                                         </div>
                                     </div>
@@ -270,11 +266,11 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-9">
                                                 <label title="Importante">Direccion<i class="text-danger"
                                                         title="Importante">*</i></label>
                                             </div>
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-3">
                                                 <label class="block" id="alert_prov_direccion"
                                                     style="display:none"></label>
                                             </div>
@@ -309,11 +305,11 @@
                                                 onpaste="return false" placeholder="ejemplo: pedro_PD" required
                                                 onkeypress="return enableLettrsNum(event)">
 
-                                            <select class="custom-select" required id="edtdomain">
+                                            <!-- <select class="custom-select" required id="edtdomain">
                                                 <option value="@hotmail.com">@hotmail.com</option>
                                                 <option value="@Outlook.com">@Outlook.com</option>
                                                 <option value="@gmail.com">@gmail.com</option>
-                                            </select>
+                                            </select> -->
                                         </div>
                                     </div>
 
@@ -337,8 +333,8 @@
                                     </div>
                                 </div>
                             </div>
+                        <!-- </div> -->
                         </div>
-                    </div>
                 </div>
                 <div class="modal-footer justify-content-between bg-light">
                     <button type="button" class="btn btn-danger btn-sm"
@@ -389,7 +385,7 @@
 </div>
 
 <!-----Script Provider----->
-<script src="../startbootstrap/js/person/list_provider.js"></script>
+<script src="../tmp/adminLTE/dist/js/pages/customer/list_provider.js"></script>
 
 <!----Sweet Alert --->
 <!-- <script src="../startbootstrap/sweetAlert/sweetalert2.js"></script> -->
