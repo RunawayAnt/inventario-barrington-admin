@@ -16,7 +16,7 @@ function CheckUser() {
     }).done(function (reply) {
         //const lista = [];
         //lista.push(reply);
-        console.log(reply);
+        // console.log(reply);
         if (reply == 0) {
             Swal.fire({
                 icon: 'error',

@@ -55,8 +55,7 @@
         </div>
     </div>
 </section>
-</div>
-</div>
+
 <div class="modal fade" id="modal-register-category">
     <div class="modal-dialog modal-lg">
         <div class="modal-content"><div class="modal-header bg-primary text-white">

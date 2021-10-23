@@ -90,7 +90,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-fw fa-bookmark"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" id="prov_ruc"
+                                        <input type="number" class="form-control" id="prov_ruc"
                                             data-inputmask='"mask": "99999999999"' data-mask placeholder="99999999999"
                                             required onpaste="return false">
 
@@ -156,7 +156,7 @@
                                             </div>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" id="prov_email"
+                                            <input type="email" class="form-control" id="prov_email"
                                                 onpaste="return false" placeholder="ejemplo: pedro_PD" required
                                                 onkeypress="return enableLettrsNum(event)">
 
@@ -182,7 +182,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                         </div>
-                                        <input type="text" id="prov_telefono" class="form-control"
+                                        <input type="number" id="prov_telefono" class="form-control"
                                             placeholder="(+51) 999-999-999" data-inputmask='"mask": "(+51) 999-999-999"'
                                             data-mask onpaste="return false">
                                     </div>
