@@ -22,9 +22,6 @@
                    
                     <button class="btn btn-block btn-primary" onclick="notcloseModal('#modal-register-client');"
                     data-target="#modal-register-client">
-                        <span class="text-white">
-                            <i class="fas fa-plus"></i>
-                        </span>
                         <span class="text">Agregar</span>
                     </button>
 

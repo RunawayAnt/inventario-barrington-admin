@@ -211,7 +211,7 @@ session_start();
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-9">
-                                                <label title="Importante" >Unidad de Medida<i class="text-danger"
+                                                <label title="Importante" >Medida<i class="text-danger"
                                                         title="Importante">*</i></label>
                                             </div>
                                             <div class="col-sm-3">
@@ -279,8 +279,6 @@ session_start();
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <input type="text" style="display:none" id="usuarioid"
-                                        value="<?php echo $_SESSION['se_id'] ?>">
                                 </div>
                             </div>
                     </div>
@@ -307,6 +305,8 @@ session_start();
                         </div>
                     </div>
                 </form>
+                <input type="text" style="display:none" id="usuarioid"
+                                        value="<?php echo $_SESSION['se_id'] ?>">
             </div>
 
         </div>
@@ -471,7 +471,7 @@ session_start();
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-9">
-                                                <label title="Importante">Unidad de Medida<i class="text-danger"
+                                                <label title="Importante">Medida<i class="text-danger"
                                                         title="Importante">*</i></label>
                                             </div>
                                             <div class="col-sm-3">
@@ -535,7 +535,66 @@ session_start();
 
     </div>
     <!-- ES: Termina modulo o ventana para editar producto-->
+    <div class="modal fade" id="modal-view-product">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h4 class="modal-title"><i class="fas fa-eye"></i>&nbsp; Informacion Categoria</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- Profile Image -->
+                <div class="card-body bg-light">
+                    <div class="row">
+                        <div class="col-lg-4 col-12">
+                            <div class="code-bar-view text-center">
 
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-6">
+                            <div class="title-product h4 text-left">
+
+                            </div>
+                            <div class="category-product text-secondary text-left">
+
+                            </div>
+                            <div class="calendar-product text-secondary text-left">
+
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <div class="quanty-product h4">
+                            </div>
+                            <p class="price-product text-secondary">
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <dl class="row">
+                        <dt class="col-sm-4">Descripcion</dt>
+                        <dd class="col-sm-8 descripcion"></dd>
+                        <dt class="col-sm-4">Proveedor</dt>
+                        <dd class="col-sm-8 proveedor"></dd>
+                        <dt class="col-sm-4">Unidad de Medida</dt>
+                        <dd class="col-sm-8 unidad"></dd>
+                        <dt class="col-sm-4">Creado por</dt>
+                        <dd class="col-sm-8 usuario-creador"></dd>
+                    </dl>
+
+                    <!-- <strong><i class="fas fa-bookmark mr-1"></i>Nombre de la Categoria</strong>
+                    <p class="text-muted" id="c_nombre"></p>
+                    <hr>
+                    <strong><i class="fas  fa-i-cursor mr-1"></i>Descripcion</strong>
+                    <p class="text-muted" id="c_descrip"></p>
+                    <hr>
+                    <strong><i class="fa fa-calendar mr-1"></i>Creacion</strong>
+                    <p class="text-muted" id="c_creacion"></p> -->
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
 <!-----Script List product--->
 <script src="../tmp/adminLTE/dist/js/pages/product/list_product.js"></script>
 

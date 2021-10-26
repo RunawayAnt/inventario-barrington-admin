@@ -23,9 +23,6 @@
                 <div class="col-4">
                     <button class="btn btn-block btn-primary" onclick="notcloseModal('#modal-register-category');"
                      data-target="#modal-register-category">
-                        <span class="text-white">
-                            <i class="fas fa-plus"></i>
-                        </span>
                         <span class="text">Agregar</span>
                     </button>
                 </div>

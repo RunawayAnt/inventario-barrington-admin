@@ -1,7 +1,6 @@
 <script type="text/javascript" src="../config/functProv.js?rev=<?php echo time(); ?>"></script>
 
 <section class="content-header">
-    <h1 class="h3 mb-4 text-gray-800">Almacen</h1>
 </section>
 
 <!-- Main content -->
@@ -24,9 +23,6 @@
 
                     <button class="btn btn-block btn-primary" onclick="notcloseModal('#modal-register-provider');"
                      data-target="#modal-register-provider">
-                        <span class="text-white">
-                            <i class="fas fa-plus"></i>
-                        </span>
                         <span class="text">Agregar</span>
                     </button>
 

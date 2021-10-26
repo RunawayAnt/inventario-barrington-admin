@@ -36,13 +36,6 @@ function listProducts() {
                     return row.estado == 'Activo' ? '<p>' + data + '</p>' : '<p class="text-gray">' + data + '</p>';
                 }
             },
-            // { "data": "unidad" },
-
-            // {
-            //     "data": "precioentrada", render: function (data) {
-            //         return "S/ " + Number.parseFloat(data).toFixed(2);
-            //     }
-            // },
             {
                 "data": "preciosalida", render: function (data, type, row) {
                     if (row.estado == 'Activo') {
@@ -52,7 +45,6 @@ function listProducts() {
                     }
                 }
             },
-            // { "data": "mininventario" },
             {
 
                 "data": "cantidad", render: function (data, type, row) {
@@ -229,57 +221,57 @@ function registProduct() {
         caractpr = 'Not description';
     }
 
-    // if (!nombrepr.trim() == '' && nombrepr.length > 2 && !codigobarras.trim() == '' &&
-    //     codigobarras.length > 2 && !categoriapr.trim() == '' && !proveedorpr.trim() == '' 
-    //     && precioentradapr < preciosalidapr && inventariomin < cantidad && unidadpr !== null 
-    //     && !caractpr.trim() == '') {
+    if (!nombrepr.trim() == '' && nombrepr.length > 2 && !codigobarras.trim() == '' &&
+        codigobarras.length > 2 && !categoriapr.trim() == '' && !proveedorpr.trim() == ''
+        && unidadpr !== null && !caractpr.trim() == '' && parseFloat(inventariomin) < parseFloat(cantidad)) {
 
-    if (!nombrepr.trim() == '') {
-        $.ajax({
-            url: '../controller/product/ctrl_register_product_op.php',
-            type: 'POST',
-            data: {
-                codeb: codigobarras,
-                nomb: nombrepr,
-                descrip: caractpr,
-                idcateg: categoriapr,
-                idprov: proveedorpr,
-                precentrada: precioentradapr,
-                precsalida: preciosalidapr,
-                unid: unidadpr,
-                mininv: inventariomin,
-                idusuario: idusarios
-            }
-        }).done(function (reply) {
-
-            if (reply > 0) {
-                if (reply == 1) {
-                    idCategory(cantidad);
-                    $("#modal-register-product").modal('hide');
-                    Swal.fire("Elemento registrado", "El elemento se ha registrado exitosamente.",
-                        "success")
-                        .then((result) => {
-                            table.ajax.reload();
-                            inputClear(formRegs);
-                            //location.reload();
-                        })
-                } else {
-                    return Swal.fire({
-                        icon: 'warning',
-                        title: 'Elemento existente',
-                        text: 'El elemento ya está registrado en el sistema.',
-                        footer: '<h6 style="color:gray">Por favor, verifique el elemento en la lista.</h6>'
-                    });
+        if (!nombrepr.trim() == '') {
+            $.ajax({
+                url: '../controller/product/ctrl_register_product_op.php',
+                type: 'POST',
+                data: {
+                    codeb: codigobarras,
+                    nomb: nombrepr,
+                    descrip: caractpr,
+                    idcateg: categoriapr,
+                    idprov: proveedorpr,
+                    precentrada: precioentradapr,
+                    precsalida: preciosalidapr,
+                    unid: unidadpr,
+                    mininv: inventariomin,
+                    idusuario: idusarios
                 }
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Se ha detectado un error!',
-                    footer: '<a href>Comuniquese con el equipo de soporte</a>'
-                })
-            }
-        })
+            }).done(function (reply) {
+
+                if (reply > 0) {
+                    if (reply == 1) {
+                        idCategory(cantidad);
+                        $("#modal-register-product").modal('hide');
+                        Swal.fire("Elemento registrado", "El elemento se ha registrado exitosamente.",
+                            "success")
+                            .then((result) => {
+                                table.ajax.reload();
+                                inputClear(formRegs);
+                                //location.reload();
+                            })
+                    } else {
+                        return Swal.fire({
+                            icon: 'warning',
+                            title: 'Elemento existente',
+                            text: 'El elemento ya está registrado en el sistema.',
+                            footer: '<h6 style="color:gray">Por favor, verifique el elemento en la lista.</h6>'
+                        });
+                    }
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Se ha detectado un error!',
+                        footer: '<a href>Comuniquese con el equipo de soporte</a>'
+                    })
+                }
+            })
+        }
     }
 }
 
@@ -409,15 +401,7 @@ $('#table_product').on('click', '.editar', function () {
         $("#description_register").val(data.descripcion);
     }
 
-    // $(".code-bar-edit").empty();
-    // $(".code-bar-edit").append(`<svg id="barcodeedt${data.codigobarras}"></svg>`)
 
-    // JsBarcode(`#barcodeedt${data.codigobarras}`, data.codigobarras, {
-    //     format: 'codabar',
-    //     width: 2,
-    //     height: 40,
-    //     fontSize: 14
-    // });
     $("#prod_nom_edt").val(data.nombre);
     $("#prod_precentrada_edt").val(data.precioentrada);
     $("#prod_precsalida_edt").val(data.preciosalida);
@@ -447,7 +431,7 @@ function editProduct() {
         edt_descrip = 'Not description';
     }
     // console.log('::', edt_descrip);
-    if (!edt_nom.trim() == '' && edt_nom.length > 3 && edt_precentrada < edt_precsalida && edt_descrip.length > 2) {
+    if (!edt_nom.trim() == '' && edt_nom.length > 2 && edt_precentrada < edt_precsalida && edt_descrip.length > 2) {
         $.ajax({
             url: '../controller/product/ctrl_edit_product.php',
             type: 'POST',
@@ -489,57 +473,48 @@ function editProduct() {
 
 }
 
-// //Borrar Proveedores
-// $('#table_product').on('click', '.borrar', function () {
-//     var data = table.row($(this).parents('tr')).data();
-//     if (table.row(this).child.isShown()) {
-//         var data = table.row(this).data();
-//     }
+/*
+ * **OPERACIONES PARA VISUALIZAR PRODUCTO
+ */
 
-//     Swal.fire({
-//         title: 'Eliminar Producto',
-//         html: '<a style="color: red;">Se perderan los datos de proveedor registrado.</a>',
-//         imageUrl: '../templates/main/category/images/peligro.png',
-//         imageWidth: 100,
-//         imageHeight: 100,
-//         imageAlt: 'Custom image',
-//         showCancelButton: true,
-//         confirmButtonColor: '#d33',
-//         cancelButtonColor: '#3085d6',
-//         confirmButtonText: 'Eliminar'
-//     }).then((result) => {
-//         if (result.isConfirmed) {
-//             deleteProvider(data.id_producto);
-//         }
-//     })
+/* ---------------------------------------------------------------
+?Evento 'click' para mostrar producto 
+------------------------------------------------------------------*/
 
-// })
+$('#table_product').on('click', '.vista', function () {
+    var data = table.row($(this).parents('tr')).data();
+    if (table.row(this).child.isShown()) {
+        var data = table.row(this).data();
+    }
+    $(".code-bar-view").empty();
+    $(".title-product").empty();
+    $(".category-product").empty();
+    $(".calendar-product").empty();
+    $(".descripcion").empty();
+    $(".quanty-product").empty();
+    $(".price-product").empty();
 
-// function deleteProvider(in_idproducto) {
-//     $.ajax({
-//         url: '../controller/product/ctrl_delete_product.php',
-//         type: 'POST',
-//         data: {
-//             id: in_idproducto
-//         }
-//     }).done(function (reply) {
-//         if (reply > 0) {
-//             Swal.fire({
-//                 title: "Categoria eliminada",
-//                 imageUrl: '../templates/main/category/images/peligro.png',
-//                 imageWidth: 150,
-//                 imageHeight: 150,
-//                 imageAlt: 'Custom image'
-//             }).then((result) => {
-//                 table.ajax.reload();
-//             })
-//         } else {
-//             Swal.fire({
-//                 icon: 'error',
-//                 title: 'Oops...',
-//                 text: 'Se ha detectado un error!',
-//                 footer: '<a href>Comuniquese con el equipo de soporte</a>'
-//             })
-//         }
-//     })
-// }
+
+    $(".code-bar-view").append(`<svg id="barcodeedt${data.codigobarras}"></svg>`)
+
+    JsBarcode(`#barcodeedt${data.codigobarras}`, data.codigobarras, {
+        format: 'codabar',
+        width: 1,
+        height: 30,
+        fontSize: 14
+    });
+
+    $(".title-product").append('<b>Nombre:</b> ' + data.nombre);
+    $(".category-product").append('<b>Categoria:</b> ' + data.id_categoria);
+    $(".calendar-product").append('<b>Creacion:</b> ' + data.creacion);
+    $(".quanty-product").append('<p class="h1 text-center">' + data.cantidad + '</p>');
+    $(".price-product").append('<p class="h5 text-center">S/ ' + Number.parseFloat(data.preciosalida).toFixed(2) + '</p>');
+
+
+    if (data.descripcion == 'Not description') {
+        $(".descripcion").append('<span class="badge bg-secondary">sin descripcion</span>');
+    } else {
+        $(".descripcion").append(data.descripcion);
+    }
+
+})
