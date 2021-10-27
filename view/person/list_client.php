@@ -122,7 +122,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                                     </div>
-                                    <input type="number" class="form-control" id="cli_dni" data-inputmask='"mask": "99999999"'
+                                    <input type="text" class="form-control" id="cli_dni" data-inputmask='"mask": "99999999"'
                                         data-mask placeholder="Doc. de Identificacion" required onpaste="return false">
 
                                 </div>
@@ -141,7 +141,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                 </div>
-                                <input type="number" id="cli_telefono" class="form-control"
+                                <input type="text" id="cli_telefono" class="form-control"
                                     placeholder="(+51) 999-999-999"
                                     data-inputmask='"mask": "(+51) 999-999-999"' data-mask onpaste="return false">
                             </div>
@@ -243,7 +243,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                                     </div>
-                                    <input type="number" class="form-control" id="cli_edtdni" data-inputmask='"mask": "99999999"'
+                                    <input type="text" class="form-control" id="cli_edtdni" data-inputmask='"mask": "99999999"'
                                         data-mask placeholder="Doc. de Identificacion" required onpaste="return false">
 
                                 </div>
@@ -262,7 +262,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                 </div>
-                                <input type="number" id="cli_edttelefono" class="form-control"
+                                <input type="text" id="cli_edttelefono" class="form-control"
                                     placeholder="(+51) 999-999-999"
                                     data-inputmask='"mask": "(+51) 999-999-999"' data-mask onpaste="return false">
                             </div>

@@ -86,7 +86,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-fw fa-bookmark"></i></span>
                                         </div>
-                                        <input type="number" class="form-control" id="prov_ruc"
+                                        <input type="text" class="form-control" id="prov_ruc"
                                             data-inputmask='"mask": "99999999999"' data-mask placeholder="99999999999"
                                             required onpaste="return false">
 
@@ -178,7 +178,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                         </div>
-                                        <input type="number" id="prov_telefono" class="form-control"
+                                        <input type="text" id="prov_telefono" class="form-control"
                                             placeholder="(+51) 999-999-999" data-inputmask='"mask": "(+51) 999-999-999"'
                                             data-mask onpaste="return false">
                                     </div>

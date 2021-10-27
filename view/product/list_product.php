@@ -172,7 +172,7 @@ session_start();
                                                 <span class="input-group-text">S/.</span>
                                             </div>
                                             <input type="number" maxlength="30" id="prod_precentrada" placeholder="00.00"
-                                                class="form-control" onkeypress="return enableNum(event)">
+                                                class="form-control" onkeypress="return enableNum(event)" min="0">
                                             <!-- <input type="text" maxlength="30" id="prod_precentrada" placeholder="00.00"
                                                 class="form-control"> -->
                                             <div class="input-group-append">
@@ -198,7 +198,7 @@ session_start();
                                                 <span class="input-group-text">S/.</span>
                                             </div>
                                             <input type="number" maxlength="30" id="prod_precsalida" class="form-control"
-                                                placeholder="00.00" onkeypress="return enableNum(event)">
+                                                placeholder="00.00" onkeypress="return enableNum(event)" min="0">
                                             <!-- <input type="text" maxlength="30" id="prod_precsalida" class="form-control"
                                                 placeholder="00.00"> -->
                                             <div class="input-group-append">
@@ -250,7 +250,7 @@ session_start();
                                                 <div class="input-group-text"><i class="fas fa-bell"></i></div>
                                             </div>
                                             <input type="number" maxlength="30" id="prod_mini" class="form-control"
-                                                placeholder="0000" onkeypress="return enableEnt(event)">
+                                                placeholder="0000" onkeypress="return enableEnt(event)" min="0">
                                             <!-- <input type="text" maxlength="30" id="prod_mini" class="form-control"
                                                 placeholder="0000"> -->
                                         </div>
@@ -272,7 +272,7 @@ session_start();
                                                         class="fa fa-fw fa-flag-checkered"></i></span>
                                             </div>
                                             <input type="number" class="form-control" id="prod_cant" class="form-control"
-                                                placeholder="0000" onkeypress="return enableEnt(event)">
+                                                placeholder="0000" onkeypress="return enableEnt(event)" min="0">
                                             <!-- <input type="text" class="form-control" id="prod_cant" class="form-control"
                                                 placeholder="0000"> -->
                                         </div>
@@ -434,7 +434,7 @@ session_start();
                                                 <span class="input-group-text">s/</span>
                                             </div>
                                             <input type="number" maxlength="30" id="prod_precentrada_edt" placeholder="00.00"
-                                                class="form-control" onkeypress="return enableNum(event)">
+                                                class="form-control" onkeypress="return enableNum(event)" min="0">
                                             <div class="input-group-append">
                                                 <div class="input-group-text"><i class="fas fa-chevron-down"></i></div>
                                             </div>
@@ -460,7 +460,7 @@ session_start();
                                                 <span class="input-group-text">s/</span>
                                             </div>
                                             <input type="number" maxlength="30" id="prod_precsalida_edt" class="form-control"
-                                                placeholder="00.00" onkeypress="return enableNum(event)">
+                                                placeholder="00.00" onkeypress="return enableNum(event)" min="0">
                                             <div class="input-group-append">
                                                 <div class="input-group-text"><i class="fas fa-chevron-up"></i></div>
                                             </div>
@@ -508,7 +508,7 @@ session_start();
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"><i class="fas fa-bell"></i></div>
                                             </div>
-                                            <input type="number" maxlength="30" id="prod_mini_edt" class="form-control"
+                                            <input type="number" maxlength="30" id="prod_mini_edt" min="0" class="form-control"
                                                 placeholder="0000" onkeypress="return enableEnt(event)">
                                         </div>
                                     </div>
