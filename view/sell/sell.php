@@ -127,7 +127,7 @@ session_start();
                             <th>Accion</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id = "body-tabla-productos">
                     </tbody>
                 </table>
             </div>
@@ -135,21 +135,23 @@ session_start();
 
         <div class="col-12 col-lg-4">
             <article class="card p-3">
-                <p class="lead">Amount Due 2/22/2014</p>
+                <p class="lead fecha-actual"></p>
                 <div class="table-responsive">
                     <table class="table">
                         <tbody>
                             <tr>
                                 <th style="width:50%">SUBTOTAL: S/</th>
-                                <td>250.30</td>
+                                <td>
+                                    <input type="text" class="form-control p-0 m-0" id="subtotal" disabled>
+                                </td>
                             </tr>
                             <tr>
                                 <th>IVA (18%): S/</th>
-                                <td>10.34</td>
+                                <td id="iva">00.00</td>
                             </tr>
                             <tr>
                                 <th>TOTAL: S/</th>
-                                <td>265.24</td>
+                                <td id="total"></td>
                             </tr>
                         </tbody>
                     </table>

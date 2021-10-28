@@ -1,5 +1,14 @@
 $(document).ready(function () {
 
+    const fecha = new Date();
+
+    let subtotal = 0;
+    let iva = 0;
+    let total = 0;
+
+    $('#input-fecha').val(fecha.toLocaleDateString());
+    $('.fecha-actual').append(`Monto adeudado ${fecha.toLocaleDateString()}`);
+
     function obtenerClientes() {
         return new Promise((resolve, reject) => {
             $.ajax({
@@ -38,26 +47,6 @@ $(document).ready(function () {
             })
         });
     }
-
-    // function agregarCompra() {
-    //     let tr = $("<tr>");
-
-    //     tr.prepend(`<td>#</td>
-    //     <td>
-    //         <input class="form-control form-control-sm w-50" type="number" placeholder="0" min="0" max="3">
-    //     </td>
-    //     <td><select class="form-control select2bs4" style="width: 100%;" id="buscar_productos">
-    //     </select></td>
-    //     <td>20.00</td>
-    //     <td>60.00</td>
-    //     <td>
-    //         <button class="btn btn-danger btn-sm btn-eliminar-compra">
-    //             Quitar
-    //         </button>
-    //     </td>`);
-
-    //     $("#tabla-productos > tbody").prepend(tr);
-    // }
 
     obtenerClientes()
         .then(datos => {
@@ -125,17 +114,23 @@ $(document).ready(function () {
             // agregarCompra();
             let lproductos = productos.data.filter(producto => producto.estado == 'Activo');
             let options = "";
+
             if (lproductos) {
                 options = `<option selected disabled value='a'>Seleccione Producto</option>`;
                 for (const p of lproductos) {
                     options += `<option value='${p.id_producto}'>${p.nombre}</option>`;
                 }
                 $('#buscar_productos').html(options);
-            } else {
-                options = `<option selected disabled value='${0}'>Sin resultados</option>`;
-                $('#buscar_productos').html(options);
             }
+            // else {
+            //     options = `<option selected disabled value='${0}'>Sin resultados</option>`;
+            //     $('#buscar_productos').html(options);
+            // }
 
+            $('.btn-nuevo').on('click', function () {
+
+
+            });
 
             $('#agregar-producto').on('click', () => {
                 let idproducto = $('#buscar_productos').val();
@@ -144,36 +139,46 @@ $(document).ready(function () {
                     let producto = productos.data.filter(e => e.id_producto == idproducto);
                     tr.prepend(`<td>${producto[0].codigobarras}</td>
                                 <td>
-                                 <input class="form-control form-control-sm w-50" type="number" placeholder="0" min="0" max="${producto[0].cantidad}">
+                                 <input class="form-control form-control-sm w-50 cantidad-producto" type="number" placeholder="0" value="1" min="1" max="${producto[0].cantidad}">
                                 </td>
-                                <td>${producto[0].nombre}</td>
+                                <td id="${producto[0].id_producto}">${producto[0].nombre}</td>
                                 <td>${parseFloat(producto[0].preciosalida).toFixed(2)}</td>
-                                <td>0.00</td>
+                                <td>${parseFloat(producto[0].preciosalida).toFixed(2)}</td>
                                 <td>
                                     <button class="btn btn-danger btn-sm btn-eliminar-compra">
                                         Quitar
                                 </button>
                                 </td>`);
-
-                    $("#tabla-productos > tbody").prepend(tr);
+                    total += parseFloat(producto[0].preciosalida);
                     $("#modal-productos").modal('hide');
-                    console.log(producto);
+                    $('#tabla-productos > tbody').prepend(tr);
+                    $('#buscar_productos > option:selected').remove();
+                    // $('#total').prepend(parseFloat(total).toFixed(2)).toString());
+                    $('#total').append('a')
+                    // $('#total').prepend('a')
+                  console.log(total);
                 } else {
                     console.log('No hay producto seleccionado');
                 }
-            })
+            });
+
+
+            $('#tabla-productos').on('click', '.btn-eliminar-compra', function (e) {
+                let fila = e.target.parentElement.parentElement;
+                let arrfila = Array.from(fila.children);
+                $('#buscar_productos').append(`<option value='${arrfila[2].id}'>${arrfila[2].innerText}</option>`);
+                fila.remove();
+            });
+
+            $('#tabla-productos').on('change', '.cantidad-producto', function (e) {
+                let fila = e.target.parentElement.parentElement;
+                let precio_producto = parseFloat(fila.children[3].innerText);
+                let cant = parseInt(e.target.value);
+
+                fila.children[4].innerText = parseFloat(precio_producto * cant).toFixed(2);
+            });
         })
         .catch(err => console.log(err))
 
-
-    $('#agregar-producto').on('click', function () {
-
-    });
-
-    $('#tabla-productos').on('click', '.btn-eliminar-compra', function (e) {
-        let fila = e.target.parentElement.parentElement;
-        fila.remove();
-        // console.log(e.target.parentElement.parentElement,'soy un boton!');
-    });
 
 });
