@@ -137,21 +137,19 @@ session_start();
             <article class="card p-3">
                 <p class="lead fecha-actual"></p>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table tabla-monto">
                         <tbody>
                             <tr>
                                 <th style="width:50%">SUBTOTAL: S/</th>
-                                <td>
-                                    <input type="text" class="form-control p-0 m-0" id="subtotal" disabled>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th>IVA (18%): S/</th>
-                                <td id="iva">00.00</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th>TOTAL: S/</th>
-                                <td id="total"></td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>

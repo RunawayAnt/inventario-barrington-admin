@@ -2,8 +2,8 @@ $(document).ready(function () {
 
     const fecha = new Date();
 
-    let subtotal = 0;
-    let iva = 0;
+    // let subtotal = 0;
+    // let iva = 0;
     let total = 0;
 
     $('#input-fecha').val(fecha.toLocaleDateString());
@@ -33,6 +33,19 @@ $(document).ready(function () {
                 reject(textStatus);
             })
         })
+    }
+
+    function actualizarMonto(total) {
+        let tbmonto = document.querySelectorAll('.tabla-monto > tbody > tr > td');
+        let subtotal = parseFloat(total / 1.18);
+        let iva = parseFloat(total - subtotal);
+        // let precio_producto = parseFloat(fila.children[3].innerText);
+        // let cant = parseInt(e.target.value);
+        tbmonto[0].innerText = subtotal.toFixed(2);
+        tbmonto[1].innerText = iva.toFixed(2);
+        tbmonto[2].innerText = parseFloat(total).toFixed(2);
+        // fila.children[4].innerText = parseFloat(precio_producto * cant).toFixed(2);
+        // console.log(tbmonto);
     }
 
     function obtenerProductos() {
@@ -111,7 +124,7 @@ $(document).ready(function () {
             return data;
         })
         .then(productos => {
-            // agregarCompra();
+
             let lproductos = productos.data.filter(producto => producto.estado == 'Activo');
             let options = "";
 
@@ -122,15 +135,6 @@ $(document).ready(function () {
                 }
                 $('#buscar_productos').html(options);
             }
-            // else {
-            //     options = `<option selected disabled value='${0}'>Sin resultados</option>`;
-            //     $('#buscar_productos').html(options);
-            // }
-
-            $('.btn-nuevo').on('click', function () {
-
-
-            });
 
             $('#agregar-producto').on('click', () => {
                 let idproducto = $('#buscar_productos').val();
@@ -153,15 +157,11 @@ $(document).ready(function () {
                     $("#modal-productos").modal('hide');
                     $('#tabla-productos > tbody').prepend(tr);
                     $('#buscar_productos > option:selected').remove();
-                    // $('#total').prepend(parseFloat(total).toFixed(2)).toString());
-                    $('#total').append('a')
-                    // $('#total').prepend('a')
-                  console.log(total);
+                    actualizarMonto(total);
                 } else {
                     console.log('No hay producto seleccionado');
                 }
             });
-
 
             $('#tabla-productos').on('click', '.btn-eliminar-compra', function (e) {
                 let fila = e.target.parentElement.parentElement;
@@ -172,10 +172,12 @@ $(document).ready(function () {
 
             $('#tabla-productos').on('change', '.cantidad-producto', function (e) {
                 let fila = e.target.parentElement.parentElement;
-                let precio_producto = parseFloat(fila.children[3].innerText);
+                let precioproducto = parseFloat(fila.children[3].innerText);
                 let cant = parseInt(e.target.value);
-
-                fila.children[4].innerText = parseFloat(precio_producto * cant).toFixed(2);
+                let totalproducto = parseFloat(precioproducto * cant);
+                fila.children[4].innerText = totalproducto.toFixed(2);
+                total = totalproducto;
+                actualizarMonto(total);
             });
         })
         .catch(err => console.log(err))
