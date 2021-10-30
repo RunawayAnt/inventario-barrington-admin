@@ -1,13 +1,24 @@
 $(document).ready(function () {
 
     const fecha = new Date();
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    });
 
-    // let subtotal = 0;
-    // let iva = 0;
     let total = 0;
 
     $('#input-fecha').val(fecha.toLocaleDateString());
     $('.fecha-actual').append(`Monto adeudado ${fecha.toLocaleDateString()}`);
+
+    console.log(document.querySelectorAll('#body-tabla-productos > tr').length);
 
     function obtenerClientes() {
         return new Promise((resolve, reject) => {
@@ -44,8 +55,18 @@ $(document).ready(function () {
         tbmonto[0].innerText = subtotal.toFixed(2);
         tbmonto[1].innerText = iva.toFixed(2);
         tbmonto[2].innerText = parseFloat(total).toFixed(2);
+        console.log(total);
         // fila.children[4].innerText = parseFloat(precio_producto * cant).toFixed(2);
         // console.log(tbmonto);
+    }
+
+    function actualizarCostoProductos() {
+        let tbodyp = document.querySelectorAll('#body-tabla-productos > tr > .precio');
+        let totalproductos = 0;
+        tbodyp.forEach(preciop => {
+            totalproductos += parseFloat(preciop.innerText);
+        });
+        return totalproductos;
     }
 
     function obtenerProductos() {
@@ -69,7 +90,7 @@ $(document).ready(function () {
         .then(clientes => {
             let options = "";
             if (clientes) {
-                options = `<option selected disabled value='a'>Selecciona Proveedor</option>`;
+                options = `<option selected disabled value='a'>Selecciona Cliente</option>`;
                 clientes.data.forEach(cliente => {
                     options += `<option value='${cliente.id}'>${cliente.apellidos}, ${cliente.nombres}</option>`;
                 });
@@ -86,10 +107,13 @@ $(document).ready(function () {
                 if (id) {
                     let scliente = clientes.data.filter(cliente => cliente.id == id);
                     $('#dni_cliente').val(scliente[0].dni);
-                    $('#telf-cliente').val(scliente[0].telefono);
+                    $('#telf_cliente').val(scliente[0].telefono);
 
                 } else {
-                    console.log('id_cliente vacio!');
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'No ha seleccionado un cliente'
+                    })
                 }
 
             });
@@ -147,17 +171,19 @@ $(document).ready(function () {
                                 </td>
                                 <td id="${producto[0].id_producto}">${producto[0].nombre}</td>
                                 <td>${parseFloat(producto[0].preciosalida).toFixed(2)}</td>
-                                <td>${parseFloat(producto[0].preciosalida).toFixed(2)}</td>
+                                <td class="precio">${parseFloat(producto[0].preciosalida).toFixed(2)}</td>
                                 <td>
                                     <button class="btn btn-danger btn-sm btn-eliminar-compra">
                                         Quitar
                                 </button>
                                 </td>`);
                     total += parseFloat(producto[0].preciosalida);
+
                     $("#modal-productos").modal('hide');
                     $('#tabla-productos > tbody').prepend(tr);
                     $('#buscar_productos > option:selected').remove();
-                    actualizarMonto(total);
+
+                    actualizarMonto(actualizarCostoProductos());
                 } else {
                     console.log('No hay producto seleccionado');
                 }
@@ -168,6 +194,8 @@ $(document).ready(function () {
                 let arrfila = Array.from(fila.children);
                 $('#buscar_productos').append(`<option value='${arrfila[2].id}'>${arrfila[2].innerText}</option>`);
                 fila.remove();
+
+                actualizarMonto(actualizarCostoProductos());
             });
 
             $('#tabla-productos').on('change', '.cantidad-producto', function (e) {
@@ -176,11 +204,48 @@ $(document).ready(function () {
                 let cant = parseInt(e.target.value);
                 let totalproducto = parseFloat(precioproducto * cant);
                 fila.children[4].innerText = totalproducto.toFixed(2);
-                total = totalproducto;
-                actualizarMonto(total);
+
+                actualizarMonto(actualizarCostoProductos());
             });
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err));
 
+    $('.btn-nuevo').on('click', function (e) {
+        let ncliente = $('#buscar_cliente').val();
+        let vendedor = $('#buscar_vendedor').val();
+        let pagocliente = $('#pago_cliente').val();
 
+        if (vendedor !== null) {
+
+            if (pagocliente !== null) {
+                if (ncliente) {
+                    notcloseModal('#modal-productos');
+                } else {
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Casilla vacia!',
+                        text: "Por favor, agregue un Cliente."
+                    });
+                }
+            } else {
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Casilla vacia!',
+                    text: "Por favor, seleccione una opcion de pago."
+                });
+            }
+        } else {
+            Toast.fire({
+                icon: 'error',
+                title: 'Casilla vacia!',
+                text: "Por favor, agregue un Vendedor."
+            });
+        }
+
+    });
+
+    $('btn-registrar-venta').on('click', function () {
+
+    });
 });
+
