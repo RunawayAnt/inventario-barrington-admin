@@ -45,6 +45,34 @@ $(document).ready(function () {
         })
     }
 
+    function procesarVenta(idcliente, idvendedor, tipopago, totalventa) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: '../controller/sell/ctrl_register_sell.php',
+                type: 'POST',
+                data: {
+                    idcliente,
+                    idvendedor,
+                    tipopago,
+                    totalventa
+                }
+            }).done(res => {
+                resolve(res);
+            }).fail(function (jqXHR, textStatus) {
+                reject(textStatus);
+            })
+        });
+    }
+
+    function actualizarCostoProductos() {
+        let tbodyp = document.querySelectorAll('#body-tabla-productos > tr > .precio');
+        let totalproductos = 0;
+        tbodyp.forEach(preciop => {
+            totalproductos += parseFloat(preciop.innerText);
+        });
+        return totalproductos;
+    }
+
     function actualizarMonto(total) {
         let tbmonto = document.querySelectorAll('.tabla-monto > tbody > tr > td');
         let subtotal = parseFloat(total / 1.18);
@@ -57,15 +85,6 @@ $(document).ready(function () {
         // console.log(total);
         // fila.children[4].innerText = parseFloat(precio_producto * cant).toFixed(2);
         // console.log(tbmonto);
-    }
-
-    function actualizarCostoProductos() {
-        let tbodyp = document.querySelectorAll('#body-tabla-productos > tr > .precio');
-        let totalproductos = 0;
-        tbodyp.forEach(preciop => {
-            totalproductos += parseFloat(preciop.innerText);
-        });
-        return totalproductos;
     }
 
     function obtenerProductos() {
@@ -253,15 +272,35 @@ $(document).ready(function () {
         .catch(err => console.log(err));
 
     $('#btn-registrar-venta').on('click', function () {
-        let productosSeleccionados = document.querySelectorAll('.cantidad-producto');
-        let datoscompra = [];
-        productosSeleccionados.forEach(productoSeleccionado => {
-            datoscompra.push({ 
-              'id_producto': productoSeleccionado.id,
-              'cantidad': productoSeleccionado.value
-            });
-        });
-        console.log(datoscompra);
+        let id_cliente = $('#buscar_cliente').val();
+        let id_vendedor = $('#buscar_vendedor').val();
+        let tipo_pago = $('#pago_cliente').val();
+        let totalcompra = document.querySelector('#total_compra').innerText;
+
+        
+        // console.log(id_cliente, id_vendedor, tipo_pago, totalcompra);
+        // let productosSeleccionados = document.querySelectorAll('.cantidad-producto');
+        // let id_cliente = document.querySelector('#buscar_cliente selected');
+        // // let id_vendedor = document.querySelector('');
+        // // let tipo_pago = document.querySelector('');
+        // // let total = document.querySelector('');
+
+        // console.log('id_cliente',id_cliente);
+
+        // let datoscompra = [];
+
+        // productosSeleccionados.forEach(productoSeleccionado => {
+        //     datoscompra.push({ 
+        //       'id_producto': productoSeleccionado.id,
+        //       'cantidad': productoSeleccionado.value
+        //     });
+        // });
+        // console.log(datoscompra);
     });
+
+
+
+
+
 });
 

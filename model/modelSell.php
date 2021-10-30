@@ -9,6 +9,9 @@ class ModelSell
         $this->conn = new modelConn();
         $this->conn->Connect();
     }
+
+    
+
 //     public function searchClient($key)
 //     {
 //         $sql = "SELECT * FROM cliente where dni LIKE '$key'";

@@ -100,8 +100,8 @@ session_start();
                                 <label>Pago</label>
                                 <select class="custom-select" id="pago_cliente">
                                     <option selected disabled>Seleccione Pago</option>
-                                    <option>Efectivo</option>
-                                    <option>Deposito</option>
+                                    <option value="efectivo">Efectivo</option>
+                                    <option value="deposito">Deposito</option>
                                 </select>
                             </div>
                         </div>

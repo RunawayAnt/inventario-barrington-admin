@@ -18,4 +18,3 @@ $model = new ModelSell();
 //     echo json_encode($data);
 
 // }
-
