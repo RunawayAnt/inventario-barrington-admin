@@ -18,7 +18,6 @@ $(document).ready(function () {
     $('#input-fecha').val(fecha.toLocaleDateString());
     $('.fecha-actual').append(`Monto adeudado ${fecha.toLocaleDateString()}`);
 
-    console.log(document.querySelectorAll('#body-tabla-productos > tr').length);
 
     function obtenerClientes() {
         return new Promise((resolve, reject) => {
@@ -55,7 +54,7 @@ $(document).ready(function () {
         tbmonto[0].innerText = subtotal.toFixed(2);
         tbmonto[1].innerText = iva.toFixed(2);
         tbmonto[2].innerText = parseFloat(total).toFixed(2);
-        console.log(total);
+        // console.log(total);
         // fila.children[4].innerText = parseFloat(precio_producto * cant).toFixed(2);
         // console.log(tbmonto);
     }
@@ -80,6 +79,15 @@ $(document).ready(function () {
                 reject(textStatus);
             })
         });
+    }
+
+    function evaluarFilasYactivarBoton() {
+        const filas_tabla = document.querySelectorAll('#body-tabla-productos > tr');
+        if (filas_tabla.length) {
+            document.querySelector('#btn-registrar-venta').disabled = false;
+        } else {
+            document.querySelector('#btn-registrar-venta').disabled = true;
+        }
     }
 
     obtenerClientes()
@@ -166,9 +174,7 @@ $(document).ready(function () {
                     let tr = $("<tr>");
                     let producto = productos.data.filter(e => e.id_producto == idproducto);
                     tr.prepend(`<td>${producto[0].codigobarras}</td>
-                                <td>
-                                 <input class="form-control form-control-sm w-50 cantidad-producto" type="number" placeholder="0" value="1" min="1" max="${producto[0].cantidad}">
-                                </td>
+                                <td><input class="form-control form-control-sm w-50 cantidad-producto" id="${producto[0].id_producto}" type="number" placeholder="0" value="1" min="1" max="${producto[0].cantidad}"></td>
                                 <td id="${producto[0].id_producto}">${producto[0].nombre}</td>
                                 <td>${parseFloat(producto[0].preciosalida).toFixed(2)}</td>
                                 <td class="precio">${parseFloat(producto[0].preciosalida).toFixed(2)}</td>
@@ -182,20 +188,22 @@ $(document).ready(function () {
                     $("#modal-productos").modal('hide');
                     $('#tabla-productos > tbody').prepend(tr);
                     $('#buscar_productos > option:selected').remove();
-
                     actualizarMonto(actualizarCostoProductos());
+                    evaluarFilasYactivarBoton();
                 } else {
                     console.log('No hay producto seleccionado');
                 }
+
+
             });
 
             $('#tabla-productos').on('click', '.btn-eliminar-compra', function (e) {
                 let fila = e.target.parentElement.parentElement;
                 let arrfila = Array.from(fila.children);
-                $('#buscar_productos').append(`<option value='${arrfila[2].id}'>${arrfila[2].innerText}</option>`);
                 fila.remove();
-
+                $('#buscar_productos').append(`<option value='${arrfila[2].id}'>${arrfila[2].innerText}</option>`);
                 actualizarMonto(actualizarCostoProductos());
+                evaluarFilasYactivarBoton();
             });
 
             $('#tabla-productos').on('change', '.cantidad-producto', function (e) {
@@ -207,45 +215,53 @@ $(document).ready(function () {
 
                 actualizarMonto(actualizarCostoProductos());
             });
-        })
-        .catch(err => console.log(err));
 
-    $('.btn-nuevo').on('click', function (e) {
-        let ncliente = $('#buscar_cliente').val();
-        let vendedor = $('#buscar_vendedor').val();
-        let pagocliente = $('#pago_cliente').val();
+            $('.btn-nuevo').on('click', function (e) {
+                let ncliente = $('#buscar_cliente').val();
+                let vendedor = $('#buscar_vendedor').val();
+                let pagocliente = $('#pago_cliente').val();
 
-        if (vendedor !== null) {
+                if (vendedor !== null) {
 
-            if (pagocliente !== null) {
-                if (ncliente) {
-                    notcloseModal('#modal-productos');
+                    if (pagocliente !== null) {
+                        if (ncliente) {
+                            notcloseModal('#modal-productos');
+                        } else {
+                            Toast.fire({
+                                icon: 'error',
+                                title: 'Casilla vacia!',
+                                text: "Por favor, agregue un Cliente."
+                            });
+                        }
+                    } else {
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Casilla vacia!',
+                            text: "Por favor, seleccione una opcion de pago."
+                        });
+                    }
                 } else {
                     Toast.fire({
                         icon: 'error',
                         title: 'Casilla vacia!',
-                        text: "Por favor, agregue un Cliente."
+                        text: "Por favor, agregue un Vendedor."
                     });
                 }
-            } else {
-                Toast.fire({
-                    icon: 'error',
-                    title: 'Casilla vacia!',
-                    text: "Por favor, seleccione una opcion de pago."
-                });
-            }
-        } else {
-            Toast.fire({
-                icon: 'error',
-                title: 'Casilla vacia!',
-                text: "Por favor, agregue un Vendedor."
+
             });
-        }
+        })
+        .catch(err => console.log(err));
 
-    });
-
-    $('btn-registrar-venta').on('click', function () {
-
+    $('#btn-registrar-venta').on('click', function () {
+        let productosSeleccionados = document.querySelectorAll('.cantidad-producto');
+        let datoscompra = [];
+        productosSeleccionados.forEach(productoSeleccionado => {
+            datoscompra.push({ 
+              'id_producto': productoSeleccionado.id,
+              'cantidad': productoSeleccionado.value
+            });
+        });
+        console.log(datoscompra);
     });
 });
 

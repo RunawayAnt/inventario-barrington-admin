@@ -158,7 +158,7 @@ session_start();
                             </tr>
                             <tr>
                                 <th>TOTAL: S/</th>
-                                <td></td>
+                                <td id="total_compra"></td>
                             </tr>
                         </tbody>
                     </table>
