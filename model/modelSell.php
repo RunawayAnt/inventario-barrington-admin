@@ -10,7 +10,16 @@ class ModelSell
         $this->conn->Connect();
     }
 
-    
+    public function registerSell($idcliente, $idvendedor, $total, $tipopago)
+    {
+        $sql = "call SP_REGISTRAR_VENTAS($idcliente,$idvendedor,$total,'$tipopago')";
+        if ($q = $this->conn->conn->query($sql)) {
+            if ($row = mysqli_fetch_array($q)) {
+                return $id = trim($row[0]);
+            }
+            $this->conn->Disconnect();
+        }
+    }
 
 //     public function searchClient($key)
 //     {

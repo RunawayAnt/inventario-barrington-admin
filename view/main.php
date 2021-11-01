@@ -11,7 +11,7 @@ if (!isset($_SESSION['se_user'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Barrington Admin - Inicio</title> 
+    <title>Barrington Admin - Inicio</title>
     <!-- Font Awesome Icons *-->
     <link rel="stylesheet" href="../tmp/adminLTE/plugins/fontawesome-free/css/all.min.css">
     <!-- overlayScrollbars *-->
@@ -22,7 +22,7 @@ if (!isset($_SESSION['se_user'])) {
     <link rel="stylesheet" href="../tmp/adminLTE/plugins/DataTable/datatables.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-   
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -44,8 +44,8 @@ if (!isset($_SESSION['se_user'])) {
 
                 <li class="nav-item dropdown user-menu">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <img src="../tmp/adminLTE/dist/img/unDraw/undraw_male_avatar_323b.svg" class="user-image img-circle elevation-1"
-                            alt="User Image">
+                        <img src="../tmp/adminLTE/dist/img/unDraw/undraw_male_avatar_323b.svg"
+                            class="user-image img-circle elevation-1" alt="User Image">
                         <span class="d-none d-md-inline">
                             <?php echo $_SESSION['se_rol']; ?>
                         </span>
@@ -53,8 +53,8 @@ if (!isset($_SESSION['se_user'])) {
                     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                         <!-- User image -->
                         <li class="user-header bg-dark">
-                            <img src="../tmp/adminLTE/dist/img/unDraw/undraw_male_avatar_323b.svg" class="img-circle elevation-2"
-                                alt="User Image">
+                            <img src="../tmp/adminLTE/dist/img/unDraw/undraw_male_avatar_323b.svg"
+                                class="img-circle elevation-2" alt="User Image">
                             <p>
                                 <?php echo ucwords($_SESSION['se_lname'] . ', ' . $_SESSION['se_fname']); ?>
                                 <!-- <small><i class="fa fa-circle text-success"></i> Online</small> -->
@@ -62,7 +62,7 @@ if (!isset($_SESSION['se_user'])) {
                         </li>
                         <!-- Menu Body -->
                         <!-- <li class="user-body"> -->
-                            <!-- <div class="row">
+                        <!-- <div class="row">
                                 <div class="col-4 text-center">
                                     <a>Followers</a>
                                 </div>
@@ -73,7 +73,7 @@ if (!isset($_SESSION['se_user'])) {
                                     <a>Friends</a>
                                 </div>
                             </div> -->
-                            <!-- /.row -->
+                        <!-- /.row -->
                         <!-- </li> -->
                         <!-- Menu Footer-->
                         <li class="user-footer">
@@ -126,7 +126,7 @@ if (!isset($_SESSION['se_user'])) {
 
                         <li class="nav-item has-treeview">
                             <a class="nav-link">
-                                 <i class="nav-icon fas fa-cash-register"></i>
+                                <i class="nav-icon fas fa-cash-register"></i>
                                 <p>
                                     Venta
                                     <i class="right fas fa-angle-left"></i>
@@ -134,15 +134,13 @@ if (!isset($_SESSION['se_user'])) {
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a class="nav-link"
-                                        onclick="Load_contend('content_main','sell/list_sell.php')">
+                                    <a class="nav-link" onclick="Load_contend('content_main','sell/list_sell.php')">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Ventas</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link"
-                                        onclick="Load_contend('content_main','sell/sell.php')">
+                                    <a class="nav-link" onclick="Load_contend('content_main','sell/sell.php')">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Vender</p>
                                     </a>
@@ -155,9 +153,14 @@ if (!isset($_SESSION['se_user'])) {
                                 </li> -->
                             </ul>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="Load_contend('content_main','box/listbox.php')">
+                                <i class="nav-icon fas fa-box"></i>
+                                <p>Caja</p>
+                            </a>
+                        </li>
                         <li class="nav-header">...</li>
-    
+
                         <li class="nav-item">
                             <a class="nav-link" onclick="Load_contend('content_main','person/list_client.php')">
                                 <i class="nav-icon fas fa-user-astronaut"></i>
@@ -208,22 +211,19 @@ if (!isset($_SESSION['se_user'])) {
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a class="nav-link"
-                                        onclick="">
+                                    <a class="nav-link" onclick="">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Inventario</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link"
-                                        onclick="Load_contend('content_main','supply/supply.php')">
+                                    <a class="nav-link" onclick="Load_contend('content_main','supply/supply.php')">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Abastecer</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link"
-                                        onclick="Load_contend('content_main','supply/list_supply.php')">
+                                    <a class="nav-link" onclick="Load_contend('content_main','supply/list_supply.php')">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Abastecimientos</p>
                                     </a>
