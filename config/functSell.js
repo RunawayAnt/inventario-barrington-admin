@@ -305,9 +305,12 @@ $(document).ready(function () {
                 let datosventa = [];
 
                 productosSeleccionados.forEach(productoSeleccionado => {
+                    // console.log(productoSeleccionado.getAttribute('max'));
                     datosventa.push({
-                        'id_producto': productoSeleccionado.id,
-                        'cantidad': productoSeleccionado.value
+                        'id_producto': parseInt(productoSeleccionado.id),
+                        'cantidad': parseInt(productoSeleccionado.value),
+                        'id_venta': parseInt(idventa),
+                        'cantidad_actual':parseInt(productoSeleccionado.getAttribute('max'))
                     });
                 });
 
