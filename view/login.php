@@ -16,7 +16,7 @@ if (isset($_SESSION['se_user'])) {
 
     <title>Barrington Admin - Iniciar sesion</title>
 
-    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/cart.ico" type="image/x-icon">
 
     <!-- Custom styles for this template-->
     <link href="../tmp/sbadmin/css/sb-admin-2.css" rel="stylesheet">
@@ -38,7 +38,7 @@ if (isset($_SESSION['se_user'])) {
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <i class="nav-icon fas fa-dolly fa-2x text-gray-900"></i>
+                                        <img src="./assets/cart.png" alt="">
                                         <h1 class="h3 text-gray-900 mt-1 mb-1">Barrington <b>Admin</b></h1>
                                         <p class="h5 text-gray-600 mt-1 mb-4">Sistema de Inventario</p>
                                     </div>

@@ -1,5 +1,16 @@
 $(document).ready(function () {
     let expresion = /data/i;
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    });
     let obtenerdatosls = Object.keys(localStorage).filter(e => e.match(expresion)).map((item) => {
         return JSON.parse(localStorage.getItem(item));
     });
@@ -123,14 +134,19 @@ $(document).ready(function () {
 
                     registrarSalidaProductos(insert.substr(0, insert.length - 1))
                         .then(res => {
-                            console.log('enviado 1', res);
+                            // console.log('enviado 1', res);
                             actualizarVentaProductos(arrayproductosventa.substr(0, arrayproductosventa.length - 1))
                                 .then(res => {
-                                    console.log('enviado 2 ', res);
+                                    // console.log('enviado 2 ', res);
                                     pagoRealizado(idventa)
                                         .then(res => {
-                                            console.log('enviado 3', res);
+                                            // console.log('enviado 3', res);
+                                            Toast.fire({
+                                                icon: 'success',
+                                                title: 'Cobro realizado'
+                                            })
                                             e.target.parentElement.parentElement.parentElement.parentElement.remove();
+                                            localStorage.removeItem('data'+idventa);
                                         })
                                         .catch(err => console.log(err));
                                 })

@@ -12,6 +12,7 @@ if (!isset($_SESSION['se_user'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Barrington Admin - Inicio</title>
+    <link rel="shortcut icon" href="./assets/cart.ico" type="image/x-icon">
     <!-- Font Awesome Icons *-->
     <link rel="stylesheet" href="../tmp/adminLTE/plugins/fontawesome-free/css/all.min.css">
     <!-- overlayScrollbars *-->
@@ -32,7 +33,9 @@ if (!isset($_SESSION['se_user'])) {
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" role="button">
+                        <i class="fas fa-bars"></i>
+                    </a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a onclick="Load_contend('content_main','user/list_user.php')" class="nav-link">Personal</a>
@@ -97,8 +100,8 @@ if (!isset($_SESSION['se_user'])) {
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar elevation-4 sidebar-dark-primary">
             <!-- Brand Logo -->
-            <a class="brand-link navbar-blue bg-primary" href="">
-                &nbsp;&nbsp;&nbsp;<i class="nav-icon fas fa-dolly fa-1x text-gray-900"></i>
+            <a class="brand-link navbar-blue bg-primary p-2" href="">
+                &nbsp;<img src="assets/cart.png" alt="">
                 <span class="brand-text font-weight-navy">Barrington <b>Admin</b></span>
             </a>
             <!-- Sidebar -->

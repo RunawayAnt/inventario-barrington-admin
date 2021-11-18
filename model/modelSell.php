@@ -34,6 +34,19 @@ class ModelSell
         }
     }
 
+    public function listSellp()
+    {
+        $sql = "call SP_LISTAR_VENTAS_PAGADAS()";
+        $query_array = array();
+        if ($q = $this->conn->conn->query($sql)) {
+            while ($query_viewCategory = mysqli_fetch_assoc($q)) {
+                $query_array["data"][] = $query_viewCategory;
+            }
+            return $query_array;
+            $this->conn->Disconnect();
+        }
+    }
+
     public function registerProductsSell($valuesql)
     {
         $sql = "INSERT INTO `operacion`(`id_producto`,`cantidad`, `id_tipo_operacion`, `id_venta`, `creacion`)".$valuesql;

@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    // listSell();
+
     const fecha = new Date();
     const Toast = Swal.mixin({
         toast: true,
@@ -141,7 +143,7 @@ $(document).ready(function () {
             return clientes;
         })
         .then(clientes => {
-            $('.btn-agregar').on('click', function () {
+            $('#buscar_cliente').on('change', function () {
                 let id = $('#buscar_cliente').val();
                 if (id) {
                     let scliente = clientes.data.filter(cliente => cliente.id == id);
@@ -248,37 +250,20 @@ $(document).ready(function () {
             });
 
             $('.btn-nuevo').on('click', function (e) {
-                let ncliente = $('#buscar_cliente').val();
-                let vendedor = $('#buscar_vendedor').val();
-                let pagocliente = $('#pago_cliente').val();
-
-                if (vendedor !== null) {
-
-                    if (pagocliente !== null) {
-                        if (ncliente) {
-                            notcloseModal('#modal-productos');
-                        } else {
-                            Toast.fire({
-                                icon: 'error',
-                                title: 'Casilla vacia!',
-                                text: "Por favor, agregue un Cliente."
-                            });
-                        }
-                    } else {
+                let inputs = document.querySelectorAll('.form-cliente .insert');
+                inputs.forEach(e => {
+                    if (e.value == 'a' || e.value == 'Seleccione Pago') {
                         Toast.fire({
                             icon: 'error',
                             title: 'Casilla vacia!',
-                            text: "Por favor, seleccione una opcion de pago."
+                            text: "Por favor, rellene casilla '" + e.name + "'"
                         });
+                    } else {
+                        if (e[0].value != 'a' & e[1].value != 'a' & e[2] != 'Seleccione Pago') {
+                            notcloseModal('#modal-productos');
+                        }
                     }
-                } else {
-                    Toast.fire({
-                        icon: 'error',
-                        title: 'Casilla vacia!',
-                        text: "Por favor, agregue un Vendedor."
-                    });
-                }
-
+                });
             });
         })
         .catch(err => console.log(err));
@@ -310,7 +295,7 @@ $(document).ready(function () {
                         'id_producto': parseInt(productoSeleccionado.id),
                         'cantidad': parseInt(productoSeleccionado.value),
                         'id_venta': parseInt(idventa),
-                        'cantidad_actual':parseInt(productoSeleccionado.getAttribute('max'))
+                        'cantidad_actual': parseInt(productoSeleccionado.getAttribute('max'))
                     });
                 });
 

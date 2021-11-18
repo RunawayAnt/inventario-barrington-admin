@@ -56,12 +56,12 @@ session_start();
             </article>
 
             <article class="card p-2">
-                <div class="card-body">
+                <div class="card-body form-cliente">
                     <div class="row">
                         <div class="col-12 col-lg-4">
                             <div class="form-group">
                                 <label>Cliente</label>
-                                <select class="form-control select2bs4" style="width: 100%;" id="buscar_cliente">
+                                <select class="form-control select2bs4 insert" style="width: 100%;" id="buscar_cliente" name="Cliente">
                                 </select>
                             </div>
                         </div>
@@ -84,7 +84,7 @@ session_start();
                         <div class="col-12 col-lg-4">
                             <div class="form-group">
                                 <label>Vendedor</label>
-                                <select class="form-control select2bs4" style="width: 100%;" id="buscar_vendedor">
+                                <select class="form-control select2bs4 insert" style="width: 100%;" id="buscar_vendedor" name="Vendedor">
                                 </select>
                             </div>
                         </div>
@@ -98,7 +98,7 @@ session_start();
                         <div class="col-12 col-lg-4">
                             <div class="form-group">
                                 <label>Pago</label>
-                                <select class="custom-select" id="pago_cliente">
+                                <select class="custom-select insert" id="pago_cliente" name="Pago">
                                     <option selected disabled>Seleccione Pago</option>
                                     <option value="efectivo">Efectivo</option>
                                     <option value="deposito">Deposito</option>
@@ -108,10 +108,10 @@ session_start();
                     </div>
                     <div class="row">
                         <div class="col mt-3">
-                            <button class="btn btn-primary btn-sm btn-agregar">
+                            <!-- <button class="btn btn-primary btn-sm btn-agregar">
                                 <i class="fas fa-user"></i>&nbsp; Agregar Cliente
-                            </button>
-                            <button class="btn btn-secondary btn-sm btn-nuevo">
+                            </button> -->
+                            <button class="btn btn-primary btn-sm btn-nuevo">
                                 <i class="fas fa-plus"></i>&nbsp; Nuevo Producto
                             </button>
                         </div>
