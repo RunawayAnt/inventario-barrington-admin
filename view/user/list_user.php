@@ -1,4 +1,4 @@
-<script type="text/javascript" src="../js/functUser.js?rev=<?php echo time(); ?>"></script>
+<script type="text/javascript" src="../config/functUser.js?rev=<?php echo time(); ?>"></script>
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -7,7 +7,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item text-blue">Administrar</a></li>
+                    <li class="breadcrumb-item text-blue">Administrar</a></li>
                     <li class="breadcrumb-item active">Personal</li>
                 </ol>
             </div>
@@ -494,6 +494,12 @@
 </div>
 <!-- /.modal-dialog -->
 </div>
+<script>
+$(document).ready(function() {
+    ListUser();
+    ListRol();
+});
+</script>
 <!-- /.modal -->
-<script src="../templates/main/user/js/list_user.js"></script>
-<script src="../templates/templates_login/sweetAlert/sweetalert2.js"></script>
+<!-- <script src="../templates/main/user/js/list_user.js"></script> -->
+<!-- <script src="../templates/templates_login/sweetAlert/sweetalert2.js"></script> -->

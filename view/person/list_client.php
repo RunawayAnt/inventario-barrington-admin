@@ -1,6 +1,6 @@
-<script type="text/javascript" src="../js/functClie.js?rev=<?php echo time(); ?>"></script>
+<script type="text/javascript" src="../config/functClie.js?rev=<?php echo time(); ?>"></script>
 <section class="content-header">
-    <h1 class="h3 mb-4 text-gray-800">Almacen</h1>
+    <!-- <h1 class="h3 mb-4 text-gray-800">Almacen</h1> -->
 </section>
 <!-- Main content -->
 <section class="content">
@@ -22,9 +22,6 @@
                    
                     <button class="btn btn-block btn-primary" onclick="notcloseModal('#modal-register-client');"
                     data-target="#modal-register-client">
-                        <span class="text-white">
-                            <i class="fas fa-plus"></i>
-                        </span>
                         <span class="text">Agregar</span>
                     </button>
 
@@ -41,7 +38,7 @@
                         <th>Apellidos</th>
                         <th>Telefono</th>
                         <th>Correo</th>
-                        <th>Registrado</th>
+                        <!-- <th>Registrado</th> -->
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -53,7 +50,7 @@
                         <td>Apellidos</td>
                         <td>Telefono</td>
                         <td>Correo</td>
-                        <td>Registrado</td>
+                        <!-- <td>Registrado</td> -->
                         <td>Acciones</td>
                     </tr>
                 </tbody>
@@ -65,14 +62,12 @@
 </div>
 <div class="modal fade" id="modal-register-client">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
+        <div class="modal-content"><div class="modal-header bg-primary text-white">
                 <h4 class="modal-title"><i class="fas fa-users"></i>&nbsp; Nuevo Cliente</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cleanInputs();">
+                <button type="button" class="close" id="btn-close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
-            <form>
+            </div><form class="register-modal">
                 <div class="modal-body bg-light">
                     <div class="row">
                         <div class="col-sm-6">
@@ -157,22 +152,15 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label title="Importante">Correo Electronico<i class="text-danger"
-                                                title="Importante">*</i></label>
+                                        <label title="Importante">Correo Electronico</label>
                                     </div>
                                     <div class="col-sm-6">
                                         <label class="block" id="alert_cli_email" style="display:none"></label>
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="cli_email" onpaste="return false"
-                                        placeholder="ejemplo: pedro_PD" required onkeypress="return enableLettrsNum(event)">
-
-                                    <select class="custom-select" required id="domain">
-                                        <option value="@hotmail.com">@hotmail.com</option>
-                                        <option value="@Outlook.com">@Outlook.com</option>
-                                        <option value="@gmail.com" selected>@gmail.com</option>
-                                    </select>
+                                    <input type="email" class="form-control" id="cli_email" onpaste="return false"
+                                        placeholder="ejemplo: cliente@gmail.com"  onkeypress="return enableCodeemail(event)">
                                 </div>
                             </div>
                         </div>
@@ -180,8 +168,7 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between bg-light">
-                    <button type="button" class="btn btn-danger btn-sm" onclick="cleanInputs();"
-                        data-dismiss="modal">Cancelar
+                    <button type="button" class="btn btn-danger btn-sm" id="btn-cancel" data-dismiss="modal">Cancelar
                         &nbsp;<i class="fas fa-times"></i></button>
                     <button type="button" class="btn btn-primary btn-sm" onclick="registClient();">Guardar Cambios
                         &nbsp;<i class="fas fa-save"></i></button>
@@ -196,12 +183,12 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-info text-white">
-                <h4 class="modal-title"><i class="fas fa-users"></i>&nbsp; Editar Cliente</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cleanInputs();">
+                <h4 class="modal-title"><i class="fas fa-pencil-alt"></i>&nbsp; Editar Cliente</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form>
+            <form class="edit-modal">
                 <div class="modal-body bg-light">
                     <div class="row">
                         <div class="col-sm-6">
@@ -294,14 +281,8 @@
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="cli_edtemail" onpaste="return false"
-                                        placeholder="ejemplo: pedro_PD" required onkeypress="return enableLettrsNum(event)">
-
-                                    <select class="custom-select" required id="edtdomain">
-                                        <option value="@hotmail.com">@hotmail.com</option>
-                                        <option value="@Outlook.com">@Outlook.com</option>
-                                        <option value="@gmail.com" selected>@gmail.com</option>
-                                    </select>
+                                    <input type="email" class="form-control" id="cli_edtemail" onpaste="return false"
+                                        placeholder="ejemplo: cliente@gmail.com" required onkeypress="return enableLettrsNum(event)">
                                 </div>
                             </div>
                         </div>
@@ -309,7 +290,7 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between bg-light">
-                    <button type="button" class="btn btn-danger btn-sm" onclick="cleanInputs();"
+                    <button type="button" class="btn btn-danger btn-sm"
                         data-dismiss="modal">Cancelar
                         &nbsp;<i class="fas fa-times"></i></button>
                     <button type="button" class="btn btn-primary btn-sm" onclick="editClient();">Guardar Cambios
@@ -323,7 +304,4 @@
 </div>
 
 <!----Script Client-->
-<script src="../startbootstrap/js/person/list_client.js"></script>
-
-<!----Sweet Alert --->
-<script src="../startbootstrap/sweetAlert/sweetalert2.js"></script>
+<script src="../tmp/adminLTE/dist/js/pages/supplier/list_client.js"></script>
