@@ -26,9 +26,28 @@ function listSell() {
             { "data": "posicion" },
             { "data": "clientes" },
             { "data": "usuarios" },
-            { "data": "total" },
-            { "data": "tipopago" },
-            { "data": "estado" },
+            {
+                "data": "total", render: function (data) {
+
+                    return "S/ " + Number.parseFloat(data).toFixed(2);
+                }
+            },
+            {
+                "data": "tipopago", render: function (data, type, row) {
+                    if (data == 'efectivo') {
+                        return '<span class="badge bg-primary">' + data + '</span>'
+                    } else {
+                        return '<span class="badge bg-warning">' + data + '</span>'
+                    }
+                }
+            },
+            {
+                "data": "estado", render: function (data, type, row) {
+
+                    return '<span class="badge rounded-pill bg-success">' + data + '</span>'
+
+                }
+            },
             { "data": "creacion" }
             // {
             //     "data": "posicion", render: function (data, type, row) {
@@ -95,11 +114,12 @@ function listSell() {
         select: true
     });
 
-    document.getElementById("table_category_filter").style.display = "none";
+    document.getElementById("table_sell_filter").style.display = "none";
 
     $('input.global_filter').on('keyup click', function () {
-        filterGlobal('#table_category');
+        filterGlobal('#table_sell');
     });
+
     $('input.column_filter').on('keyup click', function () {
         filterColumn($(this).parents('tr').attr('data-column'));
     });

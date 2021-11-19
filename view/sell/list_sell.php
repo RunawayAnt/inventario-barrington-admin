@@ -1,4 +1,4 @@
-<script type="text/javascript" src="../config/functSell.js?rev=<?php echo time(); ?>"></script>
+<script type="text/javascript" src="../config/functlistSell.js?rev=<?php echo time(); ?>"></script>
 
 <section class="content-header">
     <h1 class="h3 mb-4 text-gray-800">Venta</h1>
@@ -20,11 +20,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-lg-6 mb-3">
+                <div class="col-4 col-lg-2 mb-3">
                     <!-- <button class="btn btn-block btn-primary" onclick="notcloseModal('#modal-register-category');"
                      data-target="#modal-register-category">
                         <span class="text">Agregar</span>
                     </button> -->
+                    <button class="btn btn-block btn-success" onclick="">
+                        <small class="text">Exportar &nbsp;</small><i class="far fa-file-excel"></i>
+                    </button>
                 </div>
             </div>
 

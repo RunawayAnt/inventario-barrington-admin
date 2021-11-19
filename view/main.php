@@ -23,7 +23,10 @@ if (!isset($_SESSION['se_user'])) {
     <link rel="stylesheet" href="../tmp/adminLTE/plugins/DataTable/datatables.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+    <!-- Scripts Excelexport -->
+    <script src="../tmp/sbadmin/vendor/excel/FileSaver.min.js"></script>
+    <script src="../tmp/sbadmin/vendor/excel/tableexport.min.js"></script>
+    <script src="../tmp/sbadmin/vendor/excel/xlsx.full.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">

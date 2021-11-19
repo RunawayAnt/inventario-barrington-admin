@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-    // listSell();
-
     const fecha = new Date();
     const Toast = Swal.mixin({
         toast: true,

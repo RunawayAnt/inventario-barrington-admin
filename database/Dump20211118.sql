@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `dbbarrint` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `dbbarrint`;
 -- MySQL dump 10.13  Distrib 8.0.25, for Linux (x86_64)
 --
 -- Host: localhost    Database: dbbarrint
@@ -16,6 +14,347 @@ USE `dbbarrint`;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `categorias`
+--
+
+DROP TABLE IF EXISTS `categorias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `categorias` (
+  `id_categoria` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) NOT NULL,
+  `descripcion` text NOT NULL,
+  `estado` enum('Activo','Inactivo') NOT NULL,
+  `creacion` datetime NOT NULL,
+  PRIMARY KEY (`id_categoria`)
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categorias`
+--
+
+LOCK TABLES `categorias` WRITE;
+/*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
+INSERT INTO `categorias` VALUES (11,'Telas de Lino textil','Not description','Activo','2020-11-27 11:09:03'),(14,'Telas de Lana','Not description','Activo','2020-11-29 23:01:22'),(40,'Telas de Algodón','Not description','Activo','2021-10-19 16:34:31'),(41,'Telas de Seda','Not description','Activo','2021-10-19 16:39:29'),(43,'Telas de Estambre','Not description','Activo','2021-10-19 16:40:47'),(44,'Telas de Origen artificial','Not description','Activo','2021-10-19 16:41:22');
+/*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cliente`
+--
+
+DROP TABLE IF EXISTS `cliente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cliente` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombres` varchar(100) NOT NULL,
+  `apellidos` varchar(100) NOT NULL,
+  `dni` int NOT NULL,
+  `telefono` varchar(30) NOT NULL,
+  `correo` varchar(60) NOT NULL,
+  `creacion` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `dni` (`dni`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cliente`
+--
+
+LOCK TABLES `cliente` WRITE;
+/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` VALUES (8,'Carlos Joaquin','Guillermo Lopez',70769823,'(+51) 944-975-813','carlos_jo46@hotmail.com','2021-10-13 17:31:43'),(9,'Jordan Miguel','Palomino',70769533,'(+51) 975-221-583','jpmiguel229@gmail.com','2021-10-13 17:37:15'),(15,'Carlos','Molina',31231232,'(+51) 123-123-123','correo_null','2021-10-19 22:09:22'),(16,'Carmen del Rosario','Napa Solis',60652004,'(+51) 984-223-865','correo_null','2021-10-19 22:23:43'),(17,'Axcel Sting','Anchante',70769830,'(+51) 234-232-342','correo_null','2021-10-19 22:28:35'),(18,'Carlos','Martines',32342342,'(+51) 946-873-254','correo_null','2021-10-19 23:21:47'),(19,'Jose','Ernesto Carranza',70730233,'(+51) 973-377-222','correo_null','2021-10-21 13:16:24');
+/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `configuracion`
+--
+
+DROP TABLE IF EXISTS `configuracion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `configuracion` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `direccion` varchar(90) NOT NULL,
+  `nit` int NOT NULL,
+  `razon_social` varchar(90) NOT NULL,
+  `telefono` varchar(20) NOT NULL,
+  `iva` decimal(10,0) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `configuracion`
+--
+
+LOCK TABLES `configuracion` WRITE;
+/*!40000 ALTER TABLE `configuracion` DISABLE KEYS */;
+INSERT INTO `configuracion` VALUES (1,'asd',12345678,'asdasd','123133123',18);
+/*!40000 ALTER TABLE `configuracion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `detalle_temp`
+--
+
+DROP TABLE IF EXISTS `detalle_temp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `detalle_temp` (
+  `id_detallet` int NOT NULL AUTO_INCREMENT,
+  `id_product` int NOT NULL,
+  `token_user` varchar(255) NOT NULL,
+  `cantidad` int NOT NULL,
+  `precio_venta` double NOT NULL,
+  PRIMARY KEY (`id_detallet`),
+  KEY `id_product` (`id_product`),
+  CONSTRAINT `detalle_temp_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `producto` (`id_producto`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `detalle_temp`
+--
+
+LOCK TABLES `detalle_temp` WRITE;
+/*!40000 ALTER TABLE `detalle_temp` DISABLE KEYS */;
+/*!40000 ALTER TABLE `detalle_temp` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `operacion`
+--
+
+DROP TABLE IF EXISTS `operacion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `operacion` (
+  `id_op` int NOT NULL AUTO_INCREMENT,
+  `id_producto` int DEFAULT NULL,
+  `cantidad` float DEFAULT NULL,
+  `id_tipo_operacion` int DEFAULT NULL,
+  `id_venta` int DEFAULT NULL,
+  `creacion` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_op`),
+  KEY `fk_id_producto` (`id_producto`),
+  KEY `fk_tipo_operacion` (`id_tipo_operacion`),
+  KEY `fk_venta` (`id_venta`),
+  CONSTRAINT `fk_id_producto` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`),
+  CONSTRAINT `fk_tipo_operacion` FOREIGN KEY (`id_tipo_operacion`) REFERENCES `tipo_operacion` (`id_tipop`),
+  CONSTRAINT `fk_venta` FOREIGN KEY (`id_venta`) REFERENCES `venta` (`id_venta`)
+) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `operacion`
+--
+
+LOCK TABLES `operacion` WRITE;
+/*!40000 ALTER TABLE `operacion` DISABLE KEYS */;
+INSERT INTO `operacion` VALUES (70,59,3,1,NULL,'2021-10-25 16:18:59'),(71,60,1,1,NULL,'2021-10-25 17:04:17'),(72,61,27,1,NULL,'2021-10-25 17:10:28'),(73,62,18,1,NULL,'2021-10-25 17:11:47'),(74,63,19,1,NULL,'2021-10-25 17:13:32'),(75,64,20,1,NULL,'2021-10-25 17:14:08'),(76,65,20,1,NULL,'2021-10-25 17:17:55'),(77,66,40,1,NULL,'2021-10-25 17:22:38'),(78,67,20,1,NULL,'2021-10-25 17:23:48'),(109,61,3,2,42,'2021-11-02 14:05:55'),(110,62,1,2,43,'2021-11-02 14:07:16'),(111,59,1,2,43,'2021-11-02 14:07:16'),(112,63,1,2,44,'2021-11-09 11:59:48'),(113,62,1,2,44,'2021-11-09 11:59:48'),(114,60,3,2,45,'2021-11-09 17:30:06');
+/*!40000 ALTER TABLE `operacion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `producto`
+--
+
+DROP TABLE IF EXISTS `producto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `producto` (
+  `id_producto` int NOT NULL AUTO_INCREMENT,
+  `id_proveedor` int NOT NULL,
+  `codigobarras` varchar(255) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `descripcion` text NOT NULL,
+  `mininventario` int NOT NULL,
+  `precioentrada` double NOT NULL,
+  `preciosalida` double NOT NULL,
+  `unidad` varchar(255) NOT NULL,
+  `id_usuario` int NOT NULL,
+  `id_categoria` int NOT NULL,
+  `creacion` datetime NOT NULL,
+  `estado` enum('Activo','Inactivo') NOT NULL,
+  PRIMARY KEY (`id_producto`),
+  UNIQUE KEY `codigobarras` (`codigobarras`),
+  KEY `fk_id_usuario` (`id_usuario`),
+  KEY `fk_id_categoria` (`id_categoria`),
+  KEY `fk_id_proveedor` (`id_proveedor`),
+  CONSTRAINT `fk_id_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`),
+  CONSTRAINT `fk_id_proveedor` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id`),
+  CONSTRAINT `fk_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `producto`
+--
+
+LOCK TABLES `producto` WRITE;
+/*!40000 ALTER TABLE `producto` DISABLE KEYS */;
+INSERT INTO `producto` VALUES (59,12,'D53332412A','Jeans',' Tela jeans',3,20,25,'Metros',32,40,'2021-10-25 16:18:59','Inactivo'),(60,12,'D79058162A','Franela','Not description',2,30,40,'Metros',32,11,'2021-10-25 17:04:17','Activo'),(61,12,'D22993437A','Gabardina','Not description',10,85,90,'Metros',32,40,'2021-10-25 17:10:28','Activo'),(62,17,'D50562817A','Crepé','Not description',10,20,25,'Metros',32,41,'2021-10-25 17:11:47','Activo'),(63,12,'D32506659A','Encaje','Not description',10,22,25,'Metros',32,41,'2021-10-25 17:13:32','Activo'),(64,17,'D75024583A','Oxford','Not description',10,12,25,'Metros',32,40,'2021-10-25 17:14:08','Activo'),(65,12,'D02400463A','Tull','Not description',3,20,58,'Metros',32,14,'2021-10-25 17:17:55','Activo'),(66,17,'D42775580A','Mezclilla','Not description',10,50,65,'Metros',32,14,'2021-10-25 17:22:38','Activo'),(67,12,'D77203211A','Estopilla','Not description',10,20,25,'Metros',32,40,'2021-10-25 17:23:47','Activo');
+/*!40000 ALTER TABLE `producto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `proveedor`
+--
+
+DROP TABLE IF EXISTS `proveedor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `proveedor` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `ruc` varchar(11) NOT NULL,
+  `razonsocial` varchar(100) NOT NULL,
+  `direccion` text NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `telefono` varchar(20) NOT NULL,
+  `estado` enum('Activo','Inactivo') NOT NULL,
+  `creacion` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ruc` (`ruc`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `proveedor`
+--
+
+LOCK TABLES `proveedor` WRITE;
+/*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
+INSERT INTO `proveedor` VALUES (12,'10321862533','Textil Palomino','Calle Felipe Santiago Salaverry 140, Urbanizacion El Pino, San Luis, Lima Peru','textilp_consulta@gmail.com','(+51) 983-231-969','Activo','2020-11-30 21:35:57'),(17,'10253815614','Ambitex S.A.C','Av. los portales 392','correo_null','(+51) 572-153-353','Activo','2021-10-19 20:38:21');
+/*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rol`
+--
+
+DROP TABLE IF EXISTS `rol`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `rol` (
+  `id_rol` int NOT NULL AUTO_INCREMENT,
+  `nombre_rol` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_rol`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rol`
+--
+
+LOCK TABLES `rol` WRITE;
+/*!40000 ALTER TABLE `rol` DISABLE KEYS */;
+INSERT INTO `rol` VALUES (1,'Administrador'),(2,'Trabajador');
+/*!40000 ALTER TABLE `rol` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tipo_operacion`
+--
+
+DROP TABLE IF EXISTS `tipo_operacion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tipo_operacion` (
+  `id_tipop` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_tipop`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tipo_operacion`
+--
+
+LOCK TABLES `tipo_operacion` WRITE;
+/*!40000 ALTER TABLE `tipo_operacion` DISABLE KEYS */;
+INSERT INTO `tipo_operacion` VALUES (1,'Entrada'),(2,'Salida');
+/*!40000 ALTER TABLE `tipo_operacion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuarios`
+--
+
+DROP TABLE IF EXISTS `usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `usuarios` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_rol` int NOT NULL,
+  `nombres` varchar(100) NOT NULL,
+  `apellidos` varchar(100) NOT NULL,
+  `dni` int NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `telefono` varchar(20) DEFAULT NULL,
+  `contrasen` varchar(255) NOT NULL,
+  `estado` enum('Activo','Inactivo') NOT NULL,
+  `creacion` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `dni` (`dni`),
+  UNIQUE KEY `usuario` (`usuario`),
+  KEY `fk_rol` (`id_rol`),
+  CONSTRAINT `fk_rol` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (32,1,'Axcel Sting','Anchante Mosayhuate',70769830,'admin','axcelsting345@hotmail.com','(+51) 944-947-498','$2y$10$JCxxD0OB4HjRiQzj6EGhc.kB7vfXge/q6APgM7Cgjb3aIAjx3CyIS','Activo','2020-11-23 16:53:53'),(33,2,'Luis Jesus Enrique','Nestares Torres',70769849,'trabajador1','lui16nesta@gmail.com','(+51) 970-407-066','$2y$10$2lPOoQxqbfYNwV3jrLF5neaPaD3wPvUCuPd2idVlqt.szwh5rDKNy','Activo','2020-11-23 19:28:28');
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `venta`
+--
+
+DROP TABLE IF EXISTS `venta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `venta` (
+  `id_venta` int NOT NULL AUTO_INCREMENT,
+  `id_client` int NOT NULL,
+  `id_usuar` int DEFAULT NULL,
+  `id_tipo_op` int DEFAULT NULL,
+  `total` double DEFAULT NULL,
+  `tipopago` varchar(45) DEFAULT NULL,
+  `estado` varchar(45) DEFAULT NULL,
+  `creacion` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_venta`),
+  KEY `id_usuar` (`id_usuar`),
+  KEY `id_tipo_op` (`id_tipo_op`),
+  KEY `id_client` (`id_client`),
+  CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`id_usuar`) REFERENCES `usuarios` (`id`),
+  CONSTRAINT `venta_ibfk_2` FOREIGN KEY (`id_tipo_op`) REFERENCES `tipo_operacion` (`id_tipop`),
+  CONSTRAINT `venta_ibfk_3` FOREIGN KEY (`id_client`) REFERENCES `cliente` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `venta`
+--
+
+LOCK TABLES `venta` WRITE;
+/*!40000 ALTER TABLE `venta` DISABLE KEYS */;
+INSERT INTO `venta` VALUES (41,9,33,2,130,'efectivo','Pagado','2021-11-02 14:02:41'),(42,15,33,2,270,'efectivo','Pagado','2021-11-02 14:05:52'),(43,15,33,2,50,'efectivo','Pagado','2021-11-02 14:07:12'),(44,9,33,2,50,'efectivo','Pagado','2021-11-09 11:59:41'),(45,15,33,2,120,'efectivo','Pagado','2021-11-09 17:27:34');
+/*!40000 ALTER TABLE `venta` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping events for database 'dbbarrint'
@@ -435,6 +774,96 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_listar_ventas` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_listar_ventas`()
+    NO SQL
+BEGIN
+DECLARE CANTIDAD int;
+SET @CANTIDAD:=0;
+SELECT
+@CANTIDAD:=@CANTIDAD+1 AS posicion,
+v.id_venta,
+concat_ws(', ', c.nombres, c.apellidos) AS clientes,
+concat_ws(', ', u.nombres, u.apellidos) AS usuarios,
+v.id_tipo_op,
+v.total,
+v.tipopago,
+v.estado,
+v.creacion
+FROM venta v 
+INNER JOIN cliente c ON v.id_client = c.id
+INNER JOIN usuarios u ON v.id_usuar = u.id
+WHERE v.estado = 'No pagado';
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_listar_ventas_pagadas` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_listar_ventas_pagadas`()
+    NO SQL
+BEGIN
+DECLARE CANTIDAD int;
+SET @CANTIDAD:=0;
+SELECT
+@CANTIDAD:=@CANTIDAD+1 AS posicion,
+v.id_venta,
+concat_ws(', ', c.nombres, c.apellidos) AS clientes,
+concat_ws(', ', u.nombres, u.apellidos) AS usuarios,
+v.id_tipo_op,
+v.total,
+v.tipopago,
+v.estado,
+v.creacion
+FROM venta v 
+INNER JOIN cliente c ON v.id_client = c.id
+INNER JOIN usuarios u ON v.id_usuar = u.id
+WHERE v.estado = 'Pagado';
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_pagar_venta` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_pagar_venta`(IN `In_id` INT(11), IN `In_estado` VARCHAR(20))
+    NO SQL
+UPDATE venta SET estado = In_estado WHERE id_venta = In_id ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_producto_categoria` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -636,6 +1065,29 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_registrar_ventas` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_registrar_ventas`(IN `idcliente` INT(8), IN `idusuario` INT(8), IN `intotal` DOUBLE,IN `inpago` VARCHAR(45))
+    NO SQL
+BEGIN
+DECLARE ID INT;
+INSERT INTO `venta`(`id_client`, `id_usuar`, `id_tipo_op`, `total`, `tipopago`, `estado`, `creacion`) VALUES (idcliente,idusuario,2,intotal,inpago,'No pagado',Now());
+SET @ID:=(SELECT MAX(id_venta) AS id_venta FROM dbbarrint.venta);
+SELECT @ID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_verificar_usuarios` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -664,4 +1116,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-27 14:09:44
+-- Dump completed on 2021-11-18 18:09:17

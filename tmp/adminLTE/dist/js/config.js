@@ -3,12 +3,7 @@
  ** estamos reutilizando codigo *
  */
 //?___Cargar elementos en la web
-
-// $(document).ready(function() {
-//     // dashboard();
-//     // dashboardDate();
-// });
-
+ 
 //?___Bloquear el click derecho en la web
 
 document.oncontextmenu = function() {
