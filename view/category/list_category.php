@@ -1,5 +1,5 @@
 <script type="text/javascript" src="../config/functCate.js?rev=<?php echo time(); ?>"></script>
-
+ 
 <section class="content-header">
     <h1 class="h3 mb-4 text-gray-800">Almacen</h1>
 </section>
@@ -21,8 +21,7 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <button class="btn btn-block btn-primary" onclick="notcloseModal('#modal-register-category');"
-                     data-target="#modal-register-category">
+                    <button class="btn btn-block btn-primary" onclick="notcloseModal('#modal-register-category');" data-target="#modal-register-category">
                         <span class="text">Agregar</span>
                     </button>
                 </div>
@@ -55,29 +54,28 @@
 
 <div class="modal fade" id="modal-register-category">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content"><div class="modal-header bg-primary text-white">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
                 <h4 class="modal-title"><i class="fas fa-cubes"></i>&nbsp; Nueva Categoria</h4>
                 <button type="button" class="close" id="btn-close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </div><form class = "register-modal form-register-category">
+            </div>
+            <form class="register-modal form-register-category">
                 <div class="modal-body bg-light">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-8">
-                                        <label title="Importante">Nombre Categoria<i class="text-danger"
-                                                title="Importante">*</i></label>
+                                        <label title="Importante">Nombre Categoria<i class="text-danger" title="Importante">*</i></label>
                                     </div>
                                     <div class="col-sm-4">
                                         <label class="block" id="alert_nombre_categoria" style="display:none"></label>
                                     </div>
                                 </div>
 
-                                <input type="text" minlegth="10" maxlength="200" id="nombre_categoria"
-                                    class="form-control" onpaste="return false" placeholder="ejemplo: Tela de Seda"
-                                     onkeypress="return enableLettrs(event)" required>
+                                <input type="text" minlegth="10" maxlength="200" id="nombre_categoria" class="form-control" onpaste="return false" placeholder="ejemplo: Tela de Seda" onkeypress="return enableLettrs(event)" required>
                             </div>
                         </div>
                     </div>
@@ -92,9 +90,7 @@
                                         <label class="block" id="alert_textarea" style="display:none"></label>
                                     </div>
                                 </div>
-                                <textarea class="form-control" rows="3" placeholder="Sobre la tela..."
-                                    style="height: 78px;" id="textarea"
-                                    onkeypress="return enableLettrsTextArea(event)"></textarea>
+                                <textarea class="form-control" rows="3" placeholder="Sobre la tela..." style="height: 78px;" id="textarea" onkeypress="return enableLettrsTextArea(event)"></textarea>
                             </div>
                         </div>
                     </div>
@@ -102,7 +98,7 @@
                 <div class="modal-footer justify-content-between bg-light">
                     <button id="show_password" class="btn btn-warning btn-sm" type="button" onclick="show_Textarea(textarea)">
                         <span class="fa fa-toggle-on icon"></span>&nbsp;Descripcion
-                                    </button>
+                    </button>
                     <div class="btn-group drop-up">
                         <button type="button" id="btn-cancel" class="btn btn-danger btn-sm" data-dismiss="modal">Cancelar
                             &nbsp;<i class="fas fa-times"></i></button>
@@ -130,17 +126,14 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-8">
-                                        <label title="Importante">Nombre Categoria<i class="text-danger"
-                                                title="Importante">*</i></label>
+                                        <label title="Importante">Nombre Categoria<i class="text-danger" title="Importante">*</i></label>
                                     </div>
                                     <div class="col-sm-4">
                                         <label class="block" id="alert_nombre_categoria" style="display:none"></label>
                                     </div>
                                 </div>
 
-                                <input type="text" minlegth="10" maxlength="200" id="edit_nombre_categoria"
-                                    class="form-control" onpaste="return false" placeholder="ejemplo: Tela de Seda"
-                                     onkeypress="return enableLettrs(event)" required>
+                                <input type="text" minlegth="10" maxlength="200" id="edit_nombre_categoria" class="form-control" onpaste="return false" placeholder="ejemplo: Tela de Seda" onkeypress="return enableLettrs(event)" required>
                             </div>
                         </div>
                     </div>
@@ -155,16 +148,13 @@
                                         <label class="block" id="alert_textarea" style="display:none"></label>
                                     </div>
                                 </div>
-                                <textarea class="form-control" rows="3" placeholder="Sobre la tela..."
-                                    style="height: 78px;" id="edit_textarea"
-                                    onkeypress="return enableLettrsTextArea(event)"></textarea>
+                                <textarea class="form-control" rows="3" placeholder="Sobre la tela..." style="height: 78px;" id="edit_textarea" onkeypress="return enableLettrsTextArea(event)"></textarea>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between bg-light">
-                    <button id="show_password" class="btn btn-warning btn-sm" type="button"
-                        onclick="show_Textarea(edit_textarea)">
+                    <button id="show_password" class="btn btn-warning btn-sm" type="button" onclick="show_Textarea(edit_textarea)">
                         <span class="fa fa-toggle-off icon"></span>&nbsp;Descripcion
                     </button>
                     <div class="btn-group drop-up">

@@ -1,5 +1,6 @@
 <script type="text/javascript" src="../config/functlistSell.js?rev=<?php echo time(); ?>"></script>
 
+
 <section class="content-header">
     <h1 class="h3 mb-4 text-gray-800">Venta</h1>
 </section>
@@ -12,7 +13,7 @@
         </div>
         <div class="card-body">
             <div class="row mb-3">
-                <div class="col-12 col-lg-6 mb-3">
+                <div class="col-12 col-lg-8 mb-3">
                     <div class="input-group">
                         <input type="text" class="global_filter form-control" placeholder="Buscar" id="global_filter">
                         <div class="input-group-append">
@@ -20,13 +21,31 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-4 col-lg-1 mb-3">
+                    <!-- <button class="btn btn-block btn-primary" onclick="notcloseModal('#modal-register-category');"
+                     data-target="#modal-register-category">
+                        <span class="text">Agregar</span>
+                    </button> -->
+                    <button class="btn btn-block btn-success" onclick="" id="btnexportexcel">
+                        <small class="text">Exportar&nbsp; <i class="far fa-file-excel"></i></small>
+                    </button>
+                </div>
+                <div class="col-4 col-lg-1 mb-3">
+                    <!-- <button class="btn btn-block btn-primary" onclick="notcloseModal('#modal-register-category');"
+                     data-target="#modal-register-category">
+                        <span class="text">Agregar</span>
+                    </button> -->
+                    <button class="btn btn-block btn-danger" onclick="" id="btnexportpdf">
+                        <small class="text">PDF &nbsp;<i class="far fa-file-pdf"></i></small>
+                    </button>
+                </div>
                 <div class="col-4 col-lg-2 mb-3">
                     <!-- <button class="btn btn-block btn-primary" onclick="notcloseModal('#modal-register-category');"
                      data-target="#modal-register-category">
                         <span class="text">Agregar</span>
                     </button> -->
-                    <button class="btn btn-block btn-success" onclick="">
-                        <small class="text">Exportar &nbsp;</small><i class="far fa-file-excel"></i>
+                    <button class="btn btn-block btn-secondary" onclick="" id="btnexportprint">
+                        <small class="text">Imprimir &nbsp;<i class="fas fa-print"></i></small>
                     </button>
                 </div>
             </div>
@@ -42,7 +61,7 @@
                         <th>Tipo de pago</th>
                         <th>Estado</th>
                         <th>Creacion</th>
-                     </tr>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>
@@ -53,7 +72,7 @@
                         <td>Tipo de pago</td>
                         <td>Estado</td>
                         <td>Creacion</td>
-                     </tr>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -86,4 +105,4 @@
 </div>
 
 <!-----Script Category----->
-<script src="../tmp/adminLTE/dist/js/pages/sell/list_sell.js"></script>
+<script src="../tmp/adminLTE/dist/js/pages/sell/list_sell.js"></script>}

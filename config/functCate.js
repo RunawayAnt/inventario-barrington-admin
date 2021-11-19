@@ -93,9 +93,9 @@ function listCategory() {
     $('input.global_filter').on('keyup click', function () {
         filterGlobal('#table_category');
     });
-    $('input.column_filter').on('keyup click', function () {
-        filterColumn($(this).parents('tr').attr('data-column'));
-    });
+    // $('input.column_filter').on('keyup click', function () {
+    //     filterColumn($(this).parents('tr').attr('data-column'));
+    // });
 }
 
 /*

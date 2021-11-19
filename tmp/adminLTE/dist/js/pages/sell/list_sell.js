@@ -5,11 +5,13 @@
 /* ---------------------------------------------------------------
 ?Funcion para listar las categorias agregadas
 ------------------------------------------------------------------*/
-
 var table;
-
 function listSell() {
     table = $("#table_sell").DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'excel', 'pdf', 'print'
+        ],
         "ordering": true,
         "paging": false,
         "searching": { "regex": true },
@@ -27,27 +29,12 @@ function listSell() {
             { "data": "clientes" },
             { "data": "usuarios" },
             {
-                "data": "total", render: function (data) {
-
-                    return "S/ " + Number.parseFloat(data).toFixed(2);
+                "data": "total", render: function (data, type, row) {
+                    return 'S/ ' + Number.parseFloat(data).toFixed(2);
                 }
             },
-            {
-                "data": "tipopago", render: function (data, type, row) {
-                    if (data == 'efectivo') {
-                        return '<span class="badge bg-primary">' + data + '</span>'
-                    } else {
-                        return '<span class="badge bg-warning">' + data + '</span>'
-                    }
-                }
-            },
-            {
-                "data": "estado", render: function (data, type, row) {
-
-                    return '<span class="badge rounded-pill bg-success">' + data + '</span>'
-
-                }
-            },
+            { "data": "tipopago" },
+            { "data": "estado" },
             { "data": "creacion" }
             // {
             //     "data": "posicion", render: function (data, type, row) {
@@ -116,16 +103,31 @@ function listSell() {
 
     document.getElementById("table_sell_filter").style.display = "none";
 
+    document.querySelector(".buttons-excel").style.display = "none";
+    document.querySelector(".buttons-pdf").style.display = "none";
+    document.querySelector(".buttons-print").style.display = "none";
+
+
     $('input.global_filter').on('keyup click', function () {
         filterGlobal('#table_sell');
+    });
+
+    $('#btnexportexcel').on('click', function () {
+        $('.buttons-excel').click();
+    });
+
+    $('#btnexportpdf').on('click', function () {
+        $('.buttons-pdf').click();
+    });
+
+    $('#btnexportprint').on('click', function () {
+        $('.buttons-print').click();
     });
 
     $('input.column_filter').on('keyup click', function () {
         filterColumn($(this).parents('tr').attr('data-column'));
     });
 }
-
-
 
 
 
